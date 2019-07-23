@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddTripCodeToTrips extends Migration
+class AddBinderCodeToBinders extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class AddTripCodeToTrips extends Migration
      */
     public function up()
     {
-        Schema::table('trips', function (Blueprint $table) {
+        Schema::table('binders', function (Blueprint $table) {
             $table->string('code', 8)->after('id')->nullable();
         });
 
-        $trips = \App\Trip::all();
+        $binders = \App\Binder::all();
 
-        foreach ($trips as $trip) {
-          $trip->update([
-            'code' => hash('crc32', $trip->id)
+        foreach ($binders as $binder) {
+          $binder->update([
+            'code' => hash('crc32', $binder->id)
           ]);
         }
     }
@@ -33,7 +33,7 @@ class AddTripCodeToTrips extends Migration
      */
     public function down()
     {
-        Schema::table('trips', function (Blueprint $table) {
+        Schema::table('binders', function (Blueprint $table) {
             //
         });
     }

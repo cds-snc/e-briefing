@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePerson;
 use App\Person;
-use App\Trip;
+use App\Binder;
 use Illuminate\Http\Request;
 
 class TripPeopleController extends Controller
@@ -17,16 +17,16 @@ class TripPeopleController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param Trip $trip
+     * @param Binder $binder
      * @return \Illuminate\Http\Response
      */
-    public function index(Trip $trip)
+    public function index(Binder $binder)
     {
-        $this->authorize('manage', $trip);
+        $this->authorize('manage', $binder);
 
         return view('trips.people.index', [
-            'trip' => $trip,
-            'people' => $trip->people
+            'trip' => $binder,
+            'people' => $binder->people
         ]);
     }
 
@@ -35,12 +35,12 @@ class TripPeopleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Trip $trip)
+    public function create(Binder $binder)
     {
-        $this->authorize('manage', $trip);
+        $this->authorize('manage', $binder);
 
         return view('trips.people.create', [
-            'trip' => $trip,
+            'trip' => $binder,
             'person' => new Person()
         ]);
     }
@@ -48,15 +48,15 @@ class TripPeopleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Trip $trip
+     * @param Binder $binder
      * @param StorePerson|Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Trip $trip, StorePerson $request)
+    public function store(Binder $binder, StorePerson $request)
     {
-        $this->authorize('manage', $trip);
+        $this->authorize('manage', $binder);
         
-        $person = $trip->people()->create([
+        $person = $binder->people()->create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'email' => $request->email,
@@ -74,6 +74,6 @@ class TripPeopleController extends Controller
             ]);
         }
 
-        return redirect()->route('trips.people.index', $trip)->with('success', 'Person saved!');
+        return redirect()->route('trips.people.index', $binder)->with('success', 'Person saved!');
     }
 }

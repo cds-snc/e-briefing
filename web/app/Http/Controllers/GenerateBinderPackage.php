@@ -8,12 +8,12 @@ use App\Document;
 use App\Event;
 use App\TripPackage;
 use App\Person;
-use App\Trip;
+use App\Binder;
 use Carbon\Carbon;
 use Chumper\Zipper\Facades\Zipper;
 use Illuminate\Support\Facades\Storage;
 
-class GenerateTripPackage extends Controller
+class GenerateBinderPackage extends Controller
 {
     /**
      * @var TripPackage
@@ -25,11 +25,11 @@ class GenerateTripPackage extends Controller
         $this->package = $package;
     }
 
-    public function __invoke(Trip $trip)
+    public function __invoke(Binder $binder)
     {
         ini_set('max_execution_time', 60);
 
-        $package = $this->package->generate($trip);
+        $package = $this->package->generate($binder);
 
         return response()->download($package);
 

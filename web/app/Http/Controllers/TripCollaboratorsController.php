@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Trip;
+use App\Binder;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -13,27 +13,27 @@ class TripCollaboratorsController extends Controller
         return $this->middleware('auth');
     }
     
-    public function index(Trip $trip)
+    public function index(Binder $binder)
     {
-        $this->authorize('manage', $trip);
+        $this->authorize('manage', $binder);
 
-        $collaborator_ids = $trip->collaborators->pluck('id');
-        $collaborator_ids->push($trip->created_by_id);
+        $collaborator_ids = $binder->collaborators->pluck('id');
+        $collaborator_ids->push($binder->created_by_id);
 
         $users = User::whereNotIn('id', $collaborator_ids)->get();
 
         return view('trips.collaborators.index', [
-            'trip' => $trip,
+            'trip' => $binder,
             'users' => $users,
-            'collaborators' => $trip->collaborators
+            'collaborators' => $binder->collaborators
         ]);
     }
 
-    public function add(Trip $trip)
+    public function add(Binder $binder)
     {
-        $this->authorize('manage', $trip);
+        $this->authorize('manage', $binder);
 
-        $trip->collaborators()->attach(request()->user_id);
+        $binder->collaborators()->attach(request()->user_id);
 
         return redirect()->back()->with('success', 'Collaborator added!');
     }

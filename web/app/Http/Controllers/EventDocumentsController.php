@@ -37,12 +37,12 @@ class EventDocumentsController extends Controller
     {
         $this->authorize('manage', $event->trip);
         
-        $trip = $event->trip;
+        $binder = $event->binder;
 
         $file = $request->file('file');
         $filename = $file->store('documents', 'public');
 
-        $document = $trip->documents()->create([
+        $document = $binder->documents()->create([
             'name' => $request->name,
             'document_type' => $request->document_type,
             'file' => $filename,

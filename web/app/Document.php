@@ -3,15 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Storage;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
-use Spatie\PdfToImage\Pdf;
 
 class Document extends Model implements Sortable
 {
     protected $guarded = [];
-    protected $touches = ['trip'];
+    protected $touches = ['binder'];
 
     use SortableTrait;
 
@@ -20,9 +18,9 @@ class Document extends Model implements Sortable
         'sort_when_creating' => true,
     ];
 
-    public function trip()
+    public function binder()
     {
-        return $this->belongsTo(Trip::class);
+        return $this->belongsTo(Binder::class);
     }
 
     public function articles()

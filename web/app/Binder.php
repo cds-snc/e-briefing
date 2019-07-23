@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Trip extends Model
+class Binder extends Model
 {
     protected $guarded = [];
 

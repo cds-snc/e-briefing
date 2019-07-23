@@ -10,7 +10,7 @@ class Article extends Model implements Sortable
 {
     protected $guarded = [];
     protected $appends = ['body_html'];
-    protected $touches = ['trip'];
+    protected $touches = ['binder'];
 
     use SortableTrait;
 
@@ -19,9 +19,9 @@ class Article extends Model implements Sortable
         'sort_when_creating' => true,
     ];
 
-    public function trip()
+    public function binder()
     {
-        return $this->belongsTo(Trip::class);
+        return $this->belongsTo(Binder::class);
     }
 
     public function documents()

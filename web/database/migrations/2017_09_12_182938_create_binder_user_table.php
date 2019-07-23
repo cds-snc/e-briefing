@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTripUserTable extends Migration
+class CreateBinderUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateTripUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('trip_user', function (Blueprint $table) {
+        Schema::create('binder_user', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('trip_id');
+            $table->unsignedInteger('binder_id');
             $table->unsignedInteger('user_id');
-            $table->foreign('trip_id')->references('id')->on('trips')->onDelete('cascade');
+            $table->foreign('binder_id')->references('id')->on('binders')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
@@ -29,6 +29,6 @@ class CreateTripUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('trip_user');
+        Schema::dropIfExists('binder_user');
     }
 }

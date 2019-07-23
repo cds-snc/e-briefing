@@ -21,7 +21,7 @@ Route::post('password/change', ['as' => 'password.update', 'uses' => 'Auth\Chang
 Route::resource('users', 'UserController');
 Route::resource('trips', 'TripController');
 
-Route::post('trips/{trip}/generate', ['as' => 'trips.generate', 'uses' => 'GenerateTripPackage']);
+Route::post('trips/{trip}/generate', ['as' => 'trips.generate', 'uses' => 'GenerateBinderPackage']);
 
 /*
  * Days

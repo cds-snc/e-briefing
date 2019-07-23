@@ -25,18 +25,18 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function myTrips()
+    public function myBinders()
     {
-        return $this->hasMany(Trip::class, 'created_by_id');
+        return $this->hasMany(Binder::class, 'created_by_id');
     }
 
-    public function otherTrips()
+    public function otherBinders()
     {
-        return $this->belongsToMany(Trip::class);
+        return $this->belongsToMany(Binder::class);
     }
 
-    public function getTripsAttribute()
+    public function getBindersAttribute()
     {
-        return $this->myTrips->merge($this->otherTrips);
+        return $this->myBinders->merge($this->otherBinders);
     }
 }

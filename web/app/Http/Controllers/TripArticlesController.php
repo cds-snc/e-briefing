@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Article;
 use App\Http\Requests\StoreArticle;
-use App\Trip;
+use App\Binder;
 use Illuminate\Http\Request;
 
 class TripArticlesController extends Controller
@@ -17,31 +17,31 @@ class TripArticlesController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param Trip $trip
+     * @param Binder $binder
      * @return \Illuminate\Http\Response
      */
-    public function index(Trip $trip)
+    public function index(Binder $binder)
     {
-        $this->authorize('manage', $trip);
+        $this->authorize('manage', $binder);
 
         return view('trips.articles.index', [
-            'trip' => $trip,
-            'articles' => $trip->articles
+            'trip' => $binder,
+            'articles' => $binder->articles
         ]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @param Trip $trip
+     * @param Binder $binder
      * @return \Illuminate\Http\Response
      */
-    public function create(Trip $trip)
+    public function create(Binder $binder)
     {
-        $this->authorize('manage', $trip);
+        $this->authorize('manage', $binder);
 
         return view('trips.articles.create', [
-            'trip' => $trip,
+            'trip' => $binder,
             'article' => new Article()
         ]);
     }
@@ -49,20 +49,20 @@ class TripArticlesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Trip $trip
+     * @param Binder $binder
      * @param StoreArticle|Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Trip $trip, StoreArticle $request)
+    public function store(Binder $binder, StoreArticle $request)
     {
-        $this->authorize('manage', $trip);
+        $this->authorize('manage', $binder);
         
-        $trip->articles()->create([
+        $binder->articles()->create([
             'title' => $request->title,
             'body' => $request->body,
             'is_protected' => $request->has('is_protected')
         ]);
 
-        return redirect()->route('trips.articles.index', $trip)->with('success', 'Article saved!');
+        return redirect()->route('trips.articles.index', $binder)->with('success', 'Article saved!');
     }
 }

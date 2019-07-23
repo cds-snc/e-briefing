@@ -13,7 +13,7 @@ class AddUserIdToTrips extends Migration
      */
     public function up()
     {
-        Schema::table('trips', function (Blueprint $table) {
+        Schema::table('binders', function (Blueprint $table) {
             $table->unsignedInteger('created_by_id')->after('description')->nullable();
         });
     }
@@ -25,7 +25,7 @@ class AddUserIdToTrips extends Migration
      */
     public function down()
     {
-        Schema::table('trips', function (Blueprint $table) {
+        Schema::table('binders', function (Blueprint $table) {
             //
         });
     }

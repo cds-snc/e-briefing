@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Day extends Model
 {
     protected $guarded = [];
-    protected $touches = ['trip'];
+    protected $touches = ['binder'];
 
-    public function trip()
+    public function binder()
     {
-        return $this->belongsTo(Trip::class);
+        return $this->belongsTo(Binder::class);
     }
 
     public function events()

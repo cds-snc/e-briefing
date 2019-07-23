@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Trip;
+use App\Binder;
 use App\TripPackage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -18,11 +18,11 @@ class DownloadTripPackageController extends Controller
         $this->package = $package;
     }
 
-    public function __invoke(Trip $trip)
+    public function __invoke(Binder $binder)
     {
         ini_set('max_execution_time', 60);
 
-        $package = $this->package->generate($trip);
+        $package = $this->package->generate($binder);
 
         /*
         $this->storage_path = 'public/packages/trips/' . $trip->id;

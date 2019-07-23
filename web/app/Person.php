@@ -8,11 +8,11 @@ class Person extends Model
 {
     protected $guarded = [];
     protected $appends = ['name', 'image_url', 'body_html'];
-    protected $touches = ['trip'];
+    protected $touches = ['binder'];
 
-    public function trip()
+    public function binder()
     {
-        return $this->belongsTo(Trip::class);
+        return $this->belongsTo(Binder::class);
     }
 
     public function events()

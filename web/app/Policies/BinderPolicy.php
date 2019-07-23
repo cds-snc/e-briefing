@@ -2,20 +2,20 @@
 
 namespace App\Policies;
 
-use App\Trip;
+use App\Binder;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class TripPolicy
+class BinderPolicy
 {
     use HandlesAuthorization;
 
-    public function manage(User $user, Trip $trip)
+    public function manage(User $user, Binder $binder)
     {
         if ($user->is_admin) {
             return true;
         }
 
-        return $user->id == $trip->creator->id || $trip->collaborators->pluck('id')->contains($user->id);
+        return $user->id == $binder->creator->id || $binder->collaborators->pluck('id')->contains($user->id);
     }
 }

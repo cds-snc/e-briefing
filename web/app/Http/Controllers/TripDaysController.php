@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Day;
 use App\Http\Requests\StoreDay;
-use App\Trip;
+use App\Binder;
 
 class TripDaysController extends Controller
 {
@@ -14,35 +14,35 @@ class TripDaysController extends Controller
         return $this->middleware('auth');
     }
 
-    public function index(Trip $trip)
+    public function index(Binder $binder)
     {
-        $this->authorize('manage', $trip);
+        $this->authorize('manage', $binder);
 
         return view('trips.days.index', [
-            'trip' => $trip,
-            'days' => $trip->days()->orderBy('date')->get()
+            'trip' => $binder,
+            'days' => $binder->days()->orderBy('date')->get()
         ]);
     }
 
-    public function create(Trip $trip)
+    public function create(Binder $binder)
     {
-        $this->authorize('manage', $trip);
+        $this->authorize('manage', $binder);
 
         return view('trips.days.create', [
-            'trip' => $trip,
+            'trip' => $binder,
             'day' => new Day()
         ]);
     }
 
-    public function store(Trip $trip, StoreDay $request)
+    public function store(Binder $binder, StoreDay $request)
     {
-        $this->authorize('manage', $trip);
+        $this->authorize('manage', $binder);
         
-        $trip->days()->create([
+        $binder->days()->create([
             'name' => $request->name,
             'date' => $request->date
         ]);
 
-        return redirect()->route('trips.days.index', $trip)->with('success', 'Day added!');
+        return redirect()->route('trips.days.index', $binder)->with('success', 'Day added!');
     }
 }

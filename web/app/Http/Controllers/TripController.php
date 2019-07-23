@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTrip;
-use App\Trip;
+use App\Binder;
 use Illuminate\Http\Request;
 
 class TripController extends Controller
@@ -20,10 +20,10 @@ class TripController extends Controller
      */
     public function index()
     {
-        $trips = request()->user()->is_admin ? Trip::all() : request()->user()->trips;
+        $binder = request()->user()->is_admin ? Binder::all() : request()->user()->binders;
 
         return view('trips.index', [
-            'trips' => $trips
+            'trips' => $binder
         ]);
     }
 
@@ -35,7 +35,7 @@ class TripController extends Controller
     public function create()
     {
         return view('trips.create', [
-            'trip' => new Trip()
+            'trip' => new Binder()
         ]);
     }
 
@@ -47,46 +47,46 @@ class TripController extends Controller
      */
     public function store(StoreTrip $request)
     {
-        $trip = $request->user()->myTrips()->create([
+        $binder = $request->user()->myTrips()->create([
             'name' => $request->name,
             'description' => $request->description
         ]);
 
-        $trip->update([
-          'code' => $trip->id
+        $binder->update([
+          'code' => $binder->id
         ]);
 
-        return redirect()->route('trips.days.index', $trip)->with('success', __('Trip created.  Now you may add Days, People, Articles and Documents to your Trip.'));
+        return redirect()->route('trips.days.index', $binder)->with('success', __('Trip created.  Now you may add Days, People, Articles and Documents to your Trip.'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param Trip $trip
+     * @param Binder $binder
      * @return \Illuminate\Http\Response
      * @internal param int $id
      */
-    public function show(Trip $trip)
+    public function show(Binder $binder)
     {
-        $this->authorize('manage', $trip);
+        $this->authorize('manage', $binder);
 
         return view('trips.edit', [
-            'trip' => $trip
+            'trip' => $binder
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Trip $trip
+     * @param Binder $binder
      * @return \Illuminate\Http\Response
      */
-    public function edit(Trip $trip)
+    public function edit(Binder $binder)
     {
-        $this->authorize('manage', $trip);
+        $this->authorize('manage', $binder);
 
         return view('trips.edit', [
-            'trip' => $trip
+            'trip' => $binder
         ]);
     }
 
@@ -94,15 +94,15 @@ class TripController extends Controller
      * Update the specified resource in storage.
      *
      * @param StoreTrip|Request $request
-     * @param Trip $trip
+     * @param Binder $binder
      * @return \Illuminate\Http\Response
      * @internal param int $id
      */
-    public function update(StoreTrip $request, Trip $trip)
+    public function update(StoreTrip $request, Binder $binder)
     {
-        $this->authorize('manage', $trip);
+        $this->authorize('manage', $binder);
 
-        $trip->update([
+        $binder->update([
             'name' => $request->name,
             'description' => $request->description
         ]);
@@ -113,12 +113,12 @@ class TripController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param Trip $trip
+     * @param Binder $binder
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Trip $trip)
+    public function destroy(Binder $binder)
     {
-        $this->authorize('manage', $trip);
+        $this->authorize('manage', $binder);
 
         
     }

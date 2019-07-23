@@ -37,9 +37,9 @@ class EventContactsController extends Controller
     {
         $this->authorize('manage', $event->trip);
         
-        $trip = $event->trip;
+        $binder = $event->binder;
 
-        $person = $trip->people()->create([
+        $person = $binder->people()->create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'email' => $request->email,

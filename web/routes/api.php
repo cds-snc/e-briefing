@@ -29,7 +29,7 @@ Route::get('/events/{event}/documents/available', function (\App\Event $event) {
 
 
 Route::get('/user', function() {
-    return \App\Trip::with('days', 'days.events', 'days.events.documents', 'days.events.people', 'articles', 'people')->first();
+    return \App\Binder::with('days', 'days.events', 'days.events.documents', 'days.events.people', 'articles', 'people')->first();
 });
 
 

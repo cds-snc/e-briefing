@@ -13,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'App\Trip' => 'App\Policies\TripPolicy',
+        'App\Trip' => 'App\Policies\BinderPolicy',
     ];
 
     /**

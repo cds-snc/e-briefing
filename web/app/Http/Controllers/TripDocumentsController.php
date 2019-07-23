@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Document;
 use App\Http\Requests\StoreDocument;
-use App\Trip;
+use App\Binder;
 use Illuminate\Http\Request;
 
 class TripDocumentsController extends Controller
@@ -19,13 +19,13 @@ class TripDocumentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Trip $trip)
+    public function index(Binder $binder)
     {
-        $this->authorize('manage', $trip);
+        $this->authorize('manage', $binder);
 
         return view('trips.documents.index', [
-            'trip' => $trip,
-            'documentsByType' => $trip->documents->groupBy('document_type')
+            'trip' => $binder,
+            'documentsByType' => $binder->documents->groupBy('document_type')
         ]);
     }
 
@@ -34,12 +34,12 @@ class TripDocumentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Trip $trip)
+    public function create(Binder $binder)
     {
-        $this->authorize('manage', $trip);
+        $this->authorize('manage', $binder);
 
         return view('trips.documents.create', [
-            'trip' => $trip,
+            'trip' => $binder,
             'document' => new Document()
         ]);
     }
@@ -47,24 +47,24 @@ class TripDocumentsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Trip $trip
+     * @param Binder $binder
      * @param StoreDocument|Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Trip $trip, StoreDocument $request)
+    public function store(Binder $binder, StoreDocument $request)
     {
-        $this->authorize('manage', $trip);
+        $this->authorize('manage', $binder);
         
         $file = $request->file('file');
         $filename = $file->store('documents', 'public');
 
-        $trip->documents()->create([
+        $binder->documents()->create([
             'name' => $request->name,
             'document_type' => $request->document_type,
             'file' => $filename,
             'is_protected' => $request->has('is_protected')
         ]);
 
-        return redirect()->route('trips.documents.index', $trip)->with('success', 'Document uploaded!');
+        return redirect()->route('trips.documents.index', $binder)->with('success', 'Document uploaded!');
     }
 }

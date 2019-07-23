@@ -10,31 +10,31 @@ class TripPackage
 {
     var $storage_path;
 
-    public function generate(Trip $trip)
+    public function generate(Binder $binder)
     {
-        $this->storage_path = 'public/packages/trips/' . $trip->id;
+        $this->storage_path = 'public/packages/trips/' . $binder->id;
 
         // Delete old package
         Storage::deleteDirectory($this->storage_path);
 
-        $this->generateTripJson($trip);
+        $this->generateTripJson($binder);
         $zip = $this->zipPackage();
 
         return $zip;
     }
 
-    protected function generateTripJson(Trip $trip)
+    protected function generateTripJson(Binder $binder)
     {
-        $trip = Trip::with('days')->find($trip->id);
-        $trip->update_url = url('/api/trips/' . $trip->id . '/download');
+        $binder = Binder::with('days')->find($binder->id);
+        $binder->update_url = url('/api/trips/' . $binder->id . '/download');
 
-        $trip_json = $trip->toJson();
-        Storage::put($this->storage_path . '/trip.json', $trip_json);
+        $binder_json = $binder->toJson();
+        Storage::put($this->storage_path . '/trip.json', $binder_json);
 
-        $days_json = $trip->days()->orderBy('date')->get()->toJson();
+        $days_json = $binder->days()->orderBy('date')->get()->toJson();
         Storage::put($this->storage_path . '/days.json', $days_json);
 
-        foreach ($trip->days as $day)
+        foreach ($binder->days as $day)
         {
             $this->generateDayJson($day);
 
@@ -43,23 +43,23 @@ class TripPackage
             }
         }
 
-        $this->generateDocumentsJson($trip);
+        $this->generateDocumentsJson($binder);
 
-        foreach ($trip->documents as $document)
+        foreach ($binder->documents as $document)
         {
             $this->generateDocumentJson($document);
         }
 
-        $this->generateArticlesJson($trip);
+        $this->generateArticlesJson($binder);
 
-        foreach ($trip->articles as $article)
+        foreach ($binder->articles as $article)
         {
             $this->generateArticleJson($article);
         }
 
-        $this->generatePeopleJson($trip);
+        $this->generatePeopleJson($binder);
 
-        foreach ($trip->people as $person)
+        foreach ($binder->people as $person)
         {
             $this->generatePersonJson($person);
         }
@@ -72,9 +72,9 @@ class TripPackage
         Storage::put($this->storage_path . '/days/' . $day->id . '.json', $json);
     }
 
-    protected function generateDocumentsJson(Trip $trip)
+    protected function generateDocumentsJson(Binder $binder)
     {
-        $documents = $trip->documents->groupBy('document_type');
+        $documents = $binder->documents->groupBy('document_type');
 
         Storage::put($this->storage_path . '/documents.json', $documents->toJson());
     }
@@ -94,9 +94,9 @@ class TripPackage
         Storage::put($this->storage_path . '/events/' . $event->id . '.json', $json);
     }
 
-    protected function generateArticlesJson(Trip $trip)
+    protected function generateArticlesJson(Binder $binder)
     {
-        $json = $trip->articles->toJson();
+        $json = $binder->articles->toJson();
 
         Storage::put($this->storage_path . '/articles.json', $json);
     }
@@ -108,9 +108,9 @@ class TripPackage
         Storage::put($this->storage_path . '/articles/' . $article->id . '.json', $json);
     }
 
-    protected function generatePeopleJson(Trip $trip)
+    protected function generatePeopleJson(Binder $binder)
     {
-        $json = $trip->people->toJson();
+        $json = $binder->people->toJson();
 
         Storage::put($this->storage_path . '/people.json', $json);
     }
