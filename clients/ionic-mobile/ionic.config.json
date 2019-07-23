@@ -1,0 +1,7 @@
+{
+  "name": "e-briefing-app",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

@@ -1,0 +1,24 @@
+page-contact {
+    img {
+        max-height: 15rem;
+        width: auto;
+
+    }
+
+    ul{
+        list-style-type: none;
+    }
+
+    .card {
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .contact-header {
+        display: flex;
+        align-items: center;
+        .contact-info {
+            margin-left: 2rem;
+        }
+    }
+}
