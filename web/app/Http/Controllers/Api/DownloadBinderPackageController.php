@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
-class DownloadTripPackageController extends Controller
+class DownloadBinderPackageController extends Controller
 {
     protected $storage_path;
     private $package;
