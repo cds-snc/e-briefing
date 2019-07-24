@@ -10,9 +10,9 @@
         "erusev/parsedown": "^1.7",
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "^6.3",
-        "laravel/framework": "5.7.*",
+        "laravel/framework": "5.8.*",
         "laravel/tinker": "~1.0",
-        "laravelcollective/html": "5.7.*",
+        "laravelcollective/html": "5.8.*",
         "spatie/eloquent-sortable": "^3.3"
     },
     "require-dev": {
