@@ -25,7 +25,7 @@
                 </div>
                 <div class="navbar-menu">
                     @if(Auth::user())
-                        <a href="{{ route('trips.index') }}" class="navbar-item">{{ __('Binders') }}</a>
+                        <a href="{{ route('binders.index') }}" class="navbar-item">{{ __('Binders') }}</a>
                         @if(Auth::user()->is_admin)
                             <a href="{{ route('users.index') }}" class="navbar-item">Users</a>
                         @endif

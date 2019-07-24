@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Binder;
-use App\TripPackage;
+use App\BinderPackage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
@@ -13,7 +13,7 @@ class DownloadBinderPackageController extends Controller
     protected $storage_path;
     private $package;
 
-    public function __construct(TripPackage $package)
+    public function __construct(BinderPackage $package)
     {
         $this->package = $package;
     }

@@ -6,7 +6,7 @@ use App\Article;
 use App\Day;
 use App\Document;
 use App\Event;
-use App\TripPackage;
+use App\BinderPackage;
 use App\Person;
 use App\Binder;
 use Carbon\Carbon;
@@ -16,11 +16,11 @@ use Illuminate\Support\Facades\Storage;
 class GenerateBinderPackage extends Controller
 {
     /**
-     * @var TripPackage
+     * @var BinderPackage
      */
     private $package;
 
-    public function __construct(TripPackage $package)
+    public function __construct(BinderPackage $package)
     {
         $this->package = $package;
     }

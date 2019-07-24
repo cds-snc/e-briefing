@@ -19,9 +19,9 @@ Route::get('password/change', ['as' => 'password.edit', 'uses' => 'Auth\ChangePa
 Route::post('password/change', ['as' => 'password.update', 'uses' => 'Auth\ChangePasswordController@update']);
 
 Route::resource('users', 'UserController');
-Route::resource('trips', 'TripController');
+Route::resource('binders', 'BinderController');
 
-Route::post('trips/{trip}/generate', ['as' => 'trips.generate', 'uses' => 'GenerateBinderPackage']);
+Route::post('binders/{binder}/generate', ['as' => 'binders.generate', 'uses' => 'GenerateBinderPackage']);
 
 /*
  * Days
@@ -30,7 +30,7 @@ Route::resource('days', 'DayController', ['only' => [
     'edit', 'update', 'destroy'
 ]]);
 
-Route::resource('trips.days', 'TripDaysController', ['only' => [
+Route::resource('binders.days', 'BinderDaysController', ['only' => [
     'index', 'create', 'store'
 ]]);
 
@@ -41,7 +41,7 @@ Route::resource('people', 'PeopleController', ['only' => [
     'destroy', 'edit', 'update'
 ]]);
 
-Route::resource('trips.people', 'TripPeopleController', ['only' => [
+Route::resource('binders.people', 'BinderPeopleController', ['only' => [
     'index', 'create', 'store'
 ]]);
 
@@ -52,7 +52,7 @@ Route::resource('documents', 'DocumentsController', ['only' => [
     'edit', 'update', 'destroy'
 ]]);
 
-Route::resource('trips.documents', 'TripDocumentsController', ['only' => [
+Route::resource('binders.documents', 'BinderDocumentsController', ['only' => [
     'index', 'create', 'store'
 ]]);
 
@@ -65,7 +65,7 @@ Route::resource('articles', 'ArticlesController', ['only' => [
     'show', 'edit', 'update', 'destroy'
 ]]);
 
-Route::resource('trips.articles', 'TripArticlesController', ['only' => [
+Route::resource('binders.articles', 'BinderArticlesController', ['only' => [
     'index', 'create', 'store'
 ]]);
 
@@ -83,11 +83,11 @@ Route::resource('events', 'EventController', ['only' => [
 /*
  * Collaborators
  */
-Route::resource('trips.collaborators', 'TripCollaboratorsController', ['only' => [
+Route::resource('binders.collaborators', 'BinderCollaboratorsController', ['only' => [
     'index'
 ]]);
 
-Route::put('trips/{trip}/collaborators', ['as' => 'trips.collaborators.add', 'uses' => 'TripCollaboratorsController@add']);
+Route::put('binders/{binder}/collaborators', ['as' => 'binders.collaborators.add', 'uses' => 'BinderCollaboratorsController@add']);
 
 
 Route::put('events/{event}/participants', ['as' => 'events.participants.add', 'uses' => 'EventParticipantsController@add']);
