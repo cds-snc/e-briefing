@@ -15,10 +15,10 @@ class DocumentsController extends Controller
      */
     public function edit(Document $document)
     {
-        $this->authorize('manage', $document->trip);
+        $this->authorize('manage', $document->binder);
 
-        return view('trips.documents.edit', [
-            'trip' => $document->trip,
+        return view('binders.documents.edit', [
+            'binder' => $document->binder,
             'document' => $document
         ]);
     }
@@ -33,7 +33,7 @@ class DocumentsController extends Controller
      */
     public function update(Document $document, Request $request)
     {
-        $this->authorize('manage', $document->trip);
+        $this->authorize('manage', $document->binder);
 
         $document->update([
             'name' => $request->name,
@@ -50,7 +50,7 @@ class DocumentsController extends Controller
             ]);
         }
 
-        return redirect()->route('trips.documents.index', $document->trip)->with('success', 'Document updated');
+        return redirect()->route('binders.documents.index', $document->binder)->with('success', 'Document updated');
     }
 
     /**
@@ -62,7 +62,7 @@ class DocumentsController extends Controller
      */
     public function destroy(Document $document)
     {
-        $this->authorize('manage', $document->trip);
+        $this->authorize('manage', $document->binder);
         
         $document->delete();
 

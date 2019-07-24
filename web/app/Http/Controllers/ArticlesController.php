@@ -16,7 +16,7 @@ class ArticlesController extends Controller
      */
     public function show(Article $article)
     {
-        $this->authorize('manage', $article->trip);
+        $this->authorize('manage', $article->binder);
     }
 
     /**
@@ -27,10 +27,10 @@ class ArticlesController extends Controller
      */
     public function edit(Article $article)
     {
-        $this->authorize('manage', $article->trip);
+        $this->authorize('manage', $article->binder);
 
-        return view('trips.articles.edit', [
-            'trip' => $article->trip,
+        return view('binders.articles.edit', [
+            'trip' => $article->binder,
             'article' => $article
         ]);
     }
@@ -44,7 +44,7 @@ class ArticlesController extends Controller
      */
     public function update(Article $article, StoreArticle $request)
     {
-        $this->authorize('manage', $article->trip);
+        $this->authorize('manage', $article->binder);
 
         $article->update([
             'title' => $request->title,
@@ -52,7 +52,7 @@ class ArticlesController extends Controller
             'is_protected' => $request->has('is_protected')
         ]);
 
-        return redirect()->route('trips.articles.index', $article->trip)->with('success', 'Article saved!');
+        return redirect()->route('binders.articles.index', $article->binder)->with('success', 'Article saved!');
     }
 
     /**
@@ -63,7 +63,7 @@ class ArticlesController extends Controller
      */
     public function destroy(Article $article)
     {
-        $this->authorize('manage', $article->trip);
+        $this->authorize('manage', $article->binder);
         
         $article->delete();
 

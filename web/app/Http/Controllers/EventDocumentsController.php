@@ -16,7 +16,7 @@ class EventDocumentsController extends Controller
 
     public function add(Event $event)
     {
-        $this->authorize('manage', $event->trip);
+        $this->authorize('manage', $event->binder);
 
         $event->documents()->attach(request()->document);
 
@@ -25,9 +25,9 @@ class EventDocumentsController extends Controller
 
     public function create(Event $event)
     {
-        $this->authorize('manage', $event->trip);
+        $this->authorize('manage', $event->binder);
 
-        return view('trips.days.events.documents.create', [
+        return view('binders.days.events.documents.create', [
             'event' => $event,
             'document' => new Document()
         ]);
@@ -35,7 +35,7 @@ class EventDocumentsController extends Controller
 
     public function store(Event $event, StoreDocument $request)
     {
-        $this->authorize('manage', $event->trip);
+        $this->authorize('manage', $event->binder);
         
         $binder = $event->binder;
 

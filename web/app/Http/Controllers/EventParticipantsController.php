@@ -17,7 +17,7 @@ class EventParticipantsController extends Controller
     
     public function add(Event $event)
     {
-        $this->authorize('manage', $event->trip);
+        $this->authorize('manage', $event->binder);
 
         $event->people()->attach(request()->person, ['is_participant' => 1]);
 
@@ -26,9 +26,9 @@ class EventParticipantsController extends Controller
 
     public function create(Event $event)
     {
-        $this->authorize('manage', $event->trip);
+        $this->authorize('manage', $event->binder);
 
-        return view('trips.days.events.participants.create', [
+        return view('binders.days.events.participants.create', [
             'event' => $event,
             'person' => new Person()
         ]);
@@ -36,7 +36,7 @@ class EventParticipantsController extends Controller
 
     public function store(Event $event, StorePerson $request)
     {
-        $this->authorize('manage', $event->trip);
+        $this->authorize('manage', $event->binder);
         
         $binder = $event->binder;
 

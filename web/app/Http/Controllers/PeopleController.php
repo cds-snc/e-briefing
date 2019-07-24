@@ -11,14 +11,14 @@ class PeopleController extends Controller
 
     public function edit(Person $person)
     {
-        $this->authorize('manage', $person->trip);
+        $this->authorize('manage', $person->binder);
 
-        return view('trips.people.edit', compact(['trip', 'person']));
+        return view('binders.people.edit', compact(['binder', 'person']));
     }
 
     public function update(Person $person, StorePerson $request)
     {
-        $this->authorize('manage', $person->trip);
+        $this->authorize('manage', $person->binder);
 
         $person->update([
             'first_name' => $request->first_name,
@@ -38,12 +38,12 @@ class PeopleController extends Controller
             ]);
         }
 
-        return redirect()->route('trips.people.index', $person->trip)->with('success', 'Person saved!');
+        return redirect()->route('binders.people.index', $person->binder)->with('success', 'Person saved!');
     }
 
     public function destroy(Person $person)
     {
-        $this->authorize('manage', $person->trip);
+        $this->authorize('manage', $person->binder);
         
         $person->delete();
 

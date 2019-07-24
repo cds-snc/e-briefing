@@ -37,22 +37,22 @@ class Event extends Model
 
     public function getTripAttribute()
     {
-        return $this->day->trip;
+        return $this->day->binder;
     }
 
     public function getAvailableContactsAttribute()
     {
-        return $this->trip->people->diff($this->contacts);
+        return $this->binder->people->diff($this->contacts);
     }
 
     public function getAvailableParticipantsAttribute()
     {
-        return $this->trip->people->diff($this->participants);
+        return $this->binder->people->diff($this->participants);
     }
 
     public function getAvailableDocumentsAttribute()
     {
-        return $this->trip->documents->diff($this->documents);
+        return $this->binder->documents->diff($this->documents);
     }
 
     public function getDescriptionHtmlAttribute()

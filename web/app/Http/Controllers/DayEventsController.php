@@ -17,9 +17,9 @@ class DayEventsController extends Controller
 
     public function index(Day $day)
     {
-        $this->authorize('manage', $day->trip);
+        $this->authorize('manage', $day->binder);
 
-        return view('trips.days.events.index', [
+        return view('binders.days.events.index', [
             'day' => $day,
             'events' => $day->events()->orderBy('time_from')->get()
         ]);
@@ -27,9 +27,9 @@ class DayEventsController extends Controller
 
     public function create(Day $day)
     {
-        $this->authorize('manage', $day->trip);
+        $this->authorize('manage', $day->binder);
 
-        return view('trips.days.events.create', [
+        return view('binders.days.events.create', [
             'day' => $day,
             'event' => new Event()
         ]);
@@ -37,7 +37,7 @@ class DayEventsController extends Controller
 
     public function store(Day $day, StoreEvent $request)
     {
-        $this->authorize('manage', $day->trip);
+        $this->authorize('manage', $day->binder);
         
         $event = $day->events()->create([
             'title' => $request->title,

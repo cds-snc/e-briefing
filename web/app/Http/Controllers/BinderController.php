@@ -47,7 +47,7 @@ class BinderController extends Controller
      */
     public function store(StoreBinder $request)
     {
-        $binder = $request->user()->myTrips()->create([
+        $binder = $request->user()->myBinders()->create([
             'name' => $request->name,
             'description' => $request->description
         ]);
@@ -85,7 +85,7 @@ class BinderController extends Controller
     {
         $this->authorize('manage', $binder);
 
-        return view('trips.edit', [
+        return view('binders.edit', [
             'trip' => $binder
         ]);
     }

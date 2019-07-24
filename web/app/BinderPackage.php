@@ -12,7 +12,7 @@ class BinderPackage
 
     public function generate(Binder $binder)
     {
-        $this->storage_path = 'public/packages/trips/' . $binder->id;
+        $this->storage_path = 'public/packages/binders/' . $binder->id;
 
         // Delete old package
         Storage::deleteDirectory($this->storage_path);
@@ -26,7 +26,7 @@ class BinderPackage
     protected function generateTripJson(Binder $binder)
     {
         $binder = Binder::with('days')->find($binder->id);
-        $binder->update_url = url('/api/trips/' . $binder->id . '/download');
+        $binder->update_url = url('/api/binders/' . $binder->id . '/download');
 
         $binder_json = $binder->toJson();
         Storage::put($this->storage_path . '/trip.json', $binder_json);

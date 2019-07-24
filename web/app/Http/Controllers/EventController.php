@@ -15,27 +15,27 @@ class EventController extends Controller
 
     public function show(Event $event)
     {
-        $this->authorize('manage', $event->trip);
+        $this->authorize('manage', $event->binder);
 
-        return view('trips.days.events.show', [
+        return view('binders.days.events.show', [
             'event' => $event,
-            'documents' => $event->trip->documents->pluck('name', 'id')
+            'documents' => $event->binder->documents->pluck('name', 'id')
         ]);
     }
 
     public function edit(Event $event)
     {
-        $this->authorize('manage', $event->trip);
+        $this->authorize('manage', $event->binder);
 
-        return view('trips.days.events.edit', [
+        return view('binders.days.events.edit', [
             'event' => $event,
-            'people' => $event->trip->people->pluck('name', 'id')
+            'people' => $event->binder->people->pluck('name', 'id')
         ]);
     }
 
     public function update(Event $event, StoreEvent $request)
     {
-        $this->authorize('manage', $event->trip);
+        $this->authorize('manage', $event->binder);
 
         $event->update([
             'title' => $request->title,
@@ -55,7 +55,7 @@ class EventController extends Controller
 
     public function destroy(Event $event)
     {
-        $this->authorize('manage', $event->trip);
+        $this->authorize('manage', $event->binder);
         
         $event->delete();
 
