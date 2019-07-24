@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="title">{{ __('Trips') }}
+    <h1 class="title">{{ __('Binders') }}
         <a href="{{ route('trips.create') }}" class="is-size-6">
             <span class="icon">
                 <i class="fa fa-plus-circle"></i>

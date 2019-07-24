@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreTrip;
+use App\Http\Requests\StoreBinder;
 use App\Binder;
 use Illuminate\Http\Request;
 
@@ -42,10 +42,10 @@ class TripController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param StoreTrip|Request $request
+     * @param StoreBinder|Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreTrip $request)
+    public function store(StoreBinder $request)
     {
         $binder = $request->user()->myTrips()->create([
             'name' => $request->name,
@@ -93,12 +93,12 @@ class TripController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param StoreTrip|Request $request
+     * @param StoreBinder|Request $request
      * @param Binder $binder
      * @return \Illuminate\Http\Response
      * @internal param int $id
      */
-    public function update(StoreTrip $request, Binder $binder)
+    public function update(StoreBinder $request, Binder $binder)
     {
         $this->authorize('manage', $binder);
 
