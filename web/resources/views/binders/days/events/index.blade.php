@@ -25,11 +25,11 @@
 @section('content')
     <div class="columns">
         @push('nav-menu')
-            @include('binders._sidebar', ['trip' => $day->trip])
+            @include('binders._sidebar', ['binder' => $day->binder])
         @endpush
 
         <div class="column">
-            <h1 class="title">{{ $day->trip->name }} : {{ $day->name }}
+            <h1 class="title">{{ $day->binder->name }} : {{ $day->name }}
                 <a href="{{ route('days.events.create', $day) }}" class="is-size-6">
                     <span class="icon">
                         <i class="fa fa-plus-circle"></i>

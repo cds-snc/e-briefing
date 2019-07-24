@@ -31,7 +31,7 @@
 
         <div class="column">
             <h1 class="title">{{ $binder->name }} "My Trip"
-                <a href="{{ route('trips.articles.create', $binder) }}" class="is-size-6">
+                <a href="{{ route('binders.articles.create', $binder) }}" class="is-size-6">
                     <span class="icon">
                         <i class="fa fa-plus-circle"></i>
                     </span>
@@ -42,7 +42,7 @@
             @include('layouts.flash')
 
             @unless($binder->articles->count())
-                There are no Articles added to this Trip yet!
+                There are no Articles added to this Binder yet!
             @endunless
 
             @foreach($articles as $article)

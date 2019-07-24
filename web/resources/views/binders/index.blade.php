@@ -7,7 +7,7 @@
                 <i class="fa fa-plus-circle"></i>
             </span>
             <span>
-                {{ __('Create a Trip') }}
+                {{ __('Create a Binder') }}
             </span>
         </a>
     </h1>
@@ -15,12 +15,12 @@
     @include('layouts.flash')
 
     @unless($binders->count())
-        {{ __('There are currently no trips defined') }}
+        {{ __('There are currently no binders defined') }}
     @else
         <table class="table">
             <thead>
                 <tr>
-                    <th>{{ __('Trip name') }}</th>
+                    <th>{{ __('Binder name') }}</th>
                     <th>{{ __('Owner') }}</th>
                     <th></th>
                 </tr>

@@ -42,7 +42,7 @@
             @include('layouts.flash')
 
             @unless($binder->documents->count())
-                There are no Documents added to this Trip yet!
+                There are no Documents added to this Binder yet!
             @endunless
 
             @foreach($documentsByType as $type => $documents)

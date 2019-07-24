@@ -12,7 +12,7 @@
             @include('layouts.flash')
 
             @unless($collaborators->count())
-                <p>There are no Collaborators added to this Trip yet!</p>
+                <p>There are no Collaborators added to this Binder yet!</p>
             @else
                 <ul>
                     @foreach($collaborators as $collaborator)

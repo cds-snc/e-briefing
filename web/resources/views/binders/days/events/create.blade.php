@@ -3,7 +3,7 @@
 @section('content')
     <div class="columns">
         @push('nav-menu')
-            @include('binders._sidebar', ['trip' => $day->trip])
+            @include('binders._sidebar', ['binder' => $day->binder])
         @endpush
 
         <div class="column">
