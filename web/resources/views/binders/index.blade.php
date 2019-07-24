@@ -40,18 +40,17 @@
                                 </span>
                             </a>
 
-                                <form class="is-inline download-form" action="{{ route('binders.generate', $binder) }}" method="POST">
-                                    {{ csrf_field() }}
-                                    <button type="submit" class="button download-button">
-                                        <span class="icon">
-                                            <i class="fa fa-download"></i>
-                                        </span>
-                                        <span>
-                                            {{ __('Generate package') }}
-                                        </span>
-                                    </button>
-                                </form>
-                            
+                            <form class="is-inline download-form" action="{{ route('binders.generate', $binder) }}" method="POST">
+                                {{ csrf_field() }}
+                                <button type="submit" class="button download-button">
+                                    <span class="icon">
+                                        <i class="fa fa-download"></i>
+                                    </span>
+                                    <span>
+                                        {{ __('Generate package') }}
+                                    </span>
+                                </button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
