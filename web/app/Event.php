@@ -35,7 +35,7 @@ class Event extends Model
         return $this->belongsToMany(Document::class);
     }
 
-    public function getTripAttribute()
+    public function getBinderAttribute()
     {
         return $this->day->binder;
     }

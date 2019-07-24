@@ -30,7 +30,7 @@ class ArticlesController extends Controller
         $this->authorize('manage', $article->binder);
 
         return view('binders.articles.edit', [
-            'trip' => $article->binder,
+            'binder' => $article->binder,
             'article' => $article
         ]);
     }

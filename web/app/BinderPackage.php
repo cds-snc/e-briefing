@@ -17,19 +17,19 @@ class BinderPackage
         // Delete old package
         Storage::deleteDirectory($this->storage_path);
 
-        $this->generateTripJson($binder);
+        $this->generateBinderJson($binder);
         $zip = $this->zipPackage();
 
         return $zip;
     }
 
-    protected function generateTripJson(Binder $binder)
+    protected function generateBinderJson(Binder $binder)
     {
         $binder = Binder::with('days')->find($binder->id);
         $binder->update_url = url('/api/binders/' . $binder->id . '/download');
 
         $binder_json = $binder->toJson();
-        Storage::put($this->storage_path . '/trip.json', $binder_json);
+        Storage::put($this->storage_path . '/binder.json', $binder_json);
 
         $days_json = $binder->days()->orderBy('date')->get()->toJson();
         Storage::put($this->storage_path . '/days.json', $days_json);

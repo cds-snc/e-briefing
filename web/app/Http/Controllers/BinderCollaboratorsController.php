@@ -23,7 +23,7 @@ class BinderCollaboratorsController extends Controller
         $users = User::whereNotIn('id', $collaborator_ids)->get();
 
         return view('binders.collaborators.index', [
-            'trip' => $binder,
+            'binder' => $binder,
             'users' => $users,
             'collaborators' => $binder->collaborators
         ]);

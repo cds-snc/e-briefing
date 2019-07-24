@@ -86,7 +86,7 @@ class BinderController extends Controller
         $this->authorize('manage', $binder);
 
         return view('binders.edit', [
-            'trip' => $binder
+            'binder' => $binder
         ]);
     }
 
@@ -107,7 +107,7 @@ class BinderController extends Controller
             'description' => $request->description
         ]);
 
-        return redirect()->back()->with('success', __('Trip updated'));
+        return redirect()->back()->with('success', __('Binder updated'));
     }
 
     /**
