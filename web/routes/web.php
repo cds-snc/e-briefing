@@ -13,7 +13,7 @@
 
 Route::get('/', 'HomeController@index');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('password/change', ['as' => 'password.edit', 'uses' => 'Auth\ChangePasswordController@edit']);
 Route::post('password/change', ['as' => 'password.update', 'uses' => 'Auth\ChangePasswordController@update']);
