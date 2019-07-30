@@ -23,7 +23,7 @@
 
 <p>Simply, unzip the file into your project, this will create <code>docker-compose.yml</code> on the root of your project and a folder named <code>phpdocker</code> containing nginx and php-fpm config for it.</p>
 
-<p>Ensure the webserver config on <code>docker\nginx.conf</code> is correct for your project. PHPDocker.io will have customised this file according to the application type you chose on the generator, for instance <code>web/app|app_dev.php</code> on a Symfony project, or <code>public/index.php</code> on generic apps.</p>
+<p>Ensure the webserver config on <code>phpdocker/nginx/nginx.conf</code> is correct for your project. PHPDocker.io will have customised this file according to the application type you chose on the generator, for instance <code>web/app|app_dev.php</code> on a Symfony project, or <code>public/index.php</code> on generic apps.</p>
 
 <p>Note: you may place the files elsewhere in your project. Make sure you modify the locations for the php-fpm dockerfile, the php.ini overrides and nginx config on <code>docker-compose.yml</code> if you do so.</p>
 
@@ -33,7 +33,7 @@
 
 <ul>
 <li>Docker engine v1.13 or higher. Your OS provided package might be a little old, if you encounter problems, do upgrade. See <a href="https://docs.docker.com/engine/installation">https://docs.docker.com/engine/installation</a></li>
-<li>Docker compose v1.12 pr higher. See <a href="https://docs.docker.com/compose/install/">docs.docker.com/compose/install</a></li>
+<li>Docker compose v1.12 or higher. See <a href="https://docs.docker.com/compose/install/">docs.docker.com/compose/install</a></li>
 </ul>
 
 <p>Once you're done, simply <code>cd</code> to your project and run <code>docker-compose up -d</code>. This will initialise and start all the containers, then leave them running in the background.</p>
@@ -53,6 +53,14 @@
 <tr>
   <td>Webserver</td>
   <td><a href="http://localhost:8080">localhost:8080</a></td>
+</tr>
+<tr>
+  <td>Mailhog web interface</td>
+  <td><a href="http://localhost:8081">localhost:8081</a></td>
+</tr>
+<tr>
+  <td>MySQL</td>
+  <td><strong>host:</strong> <code>localhost</code>; <strong>port:</strong> <code>8082</code></td>
 </tr>
 </tbody>
 </table>
