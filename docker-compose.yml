@@ -24,7 +24,7 @@ services:
       ports:
         - "8082:3306"
 
-    webserver:
+    web:
       image: nginx:alpine
       container_name: e-brief-webserver
       working_dir: /application
@@ -34,7 +34,7 @@ services:
       ports:
        - "8080:80"
 
-    php-fpm:
+    app:
       build: docker/php-fpm
       container_name: e-brief-php-fpm
       working_dir: /application
