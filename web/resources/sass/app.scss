@@ -1,7 +1,7 @@
 @import "variables";
-@import "../../../node_modules/bulma/bulma";
+@import "~bulma/bulma";
 @import "overrides";
-@import "../../../node_modules/font-awesome/css/font-awesome";
+@import "~font-awesome/css/font-awesome";
 
 $badge-font-size: $size-normal;
 
