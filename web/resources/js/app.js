@@ -40,12 +40,12 @@ Vue.prototype.__ = (string, args) => {
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
+Vue.component('example', require('./components/Example.vue').default);
 
-Vue.component('add-participant-modal', require('./components/AddParticipantModal.vue'));
-Vue.component('add-contact-modal', require('./components/AddContactModal.vue'));
-Vue.component('add-document-modal', require('./components/AddDocumentModal.vue'));
-Vue.component('markdown-textarea', require('./components/MarkdownTextarea.vue'));
+Vue.component('add-participant-modal', require('./components/AddParticipantModal.vue').default);
+Vue.component('add-contact-modal', require('./components/AddContactModal.vue').default);
+Vue.component('add-document-modal', require('./components/AddDocumentModal.vue').default);
+Vue.component('markdown-textarea', require('./components/MarkdownTextarea.vue').default);
 
 const app = new Vue({
     el: '#app',
