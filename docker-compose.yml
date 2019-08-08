@@ -12,7 +12,7 @@ services:
 
     mysql:
       image: mysql:5.7
-      container_name: e-brief-mysql
+      container_name: mysql
       working_dir: /application
       volumes:
         - ./web:/application
@@ -26,7 +26,7 @@ services:
 
     web:
       image: nginx:alpine
-      container_name: e-brief-webserver
+      container_name: web
       working_dir: /application
       volumes:
           - ./web:/application
@@ -36,9 +36,42 @@ services:
 
     app:
       build: docker/php-fpm
-      container_name: e-brief-php-fpm
+      container_name: php-fpm
       working_dir: /application
       volumes:
         - ./web:/application
         - ./docker/php-fpm/php-ini-overrides.ini:/etc/php/7.3/fpm/conf.d/99-overrides.ini
 
+    node:
+      image: node:9
+      container_name: node
+      volumes:
+        - ./web:/application
+        - /application/node_modules
+      working_dir: /application
+      command: sh -c "npm install && npm run watch"
+
+    composer:
+      image: composer:1.7
+      container_name: composer
+      working_dir: /application
+      environment:
+        SSH_AUTH_SOCK: /ssh-auth.sock
+      volumes:
+        - ./web:/application
+        - "$SSH_AUTH_SOCK:/ssh-auth.sock"
+        - /etc/passwd:/etc/passwd:ro
+        - /etc/group:/etc/group:ro
+      command: composer install --ignore-platform-reqs --no-scripts
+
+    ionic:
+      build: docker/ionic
+      container_name: ionic
+      working_dir: /opt/ionic
+      ports:
+        - "8100:8100"
+        - "35729:35729"
+      volumes:
+        - ./clients/ionic-mobile:/opt/ionic
+        - /opt/ionic/node_modules
+      command: sh -c "npm install && ionic serve --all --address 0.0.0.0"
