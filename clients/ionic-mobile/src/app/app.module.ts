@@ -16,6 +16,7 @@ import {EventPage} from '@pages/event/event';
 import {TabsPage} from '@pages/tabs/tabs';
 import {ContactPage} from "@pages/contact/contact";
 import {SyncPage} from "@pages/sync/sync";
+import {NotesPage} from "@pages/notes/notes";
 
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
@@ -38,7 +39,8 @@ import {Network} from "@ionic-native/network";
         TabsPage,
         EventPage,
         ContactPage,
-        SyncPage
+        SyncPage,
+        NotesPage
     ],
     imports: [
         BrowserModule,
@@ -58,7 +60,8 @@ import {Network} from "@ionic-native/network";
         TabsPage,
         EventPage,
         ContactPage,
-        SyncPage
+        SyncPage,
+        NotesPage
     ],
     providers: [
         StatusBar,
