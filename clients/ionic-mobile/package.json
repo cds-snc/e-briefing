@@ -49,7 +49,6 @@
     "description": "An Ionic project",
     "cordova": {
         "plugins": {
-            "cordova-plugin-console": {},
             "cordova-plugin-device": {},
             "cordova-plugin-splashscreen": {},
             "cordova-plugin-statusbar": {},
