@@ -1,14 +1,17 @@
 {
-    "name": "e-briefing-app",
+    "name": "e-briefing-mobile",
     "version": "0.0.1",
     "author": "Canadian Digital Service",
     "homepage": "https://digital.canada.ca",
     "private": true,
+    "main": "electron.js",
     "scripts": {
         "start": "ionic-app-scripts serve",
         "clean": "ionic-app-scripts clean",
         "build": "ionic-app-scripts build",
-        "lint": "ionic-app-scripts lint"
+        "lint": "ionic-app-scripts lint",
+        "pack": "electron-builder --dir",
+        "dist": "electron-builder"
     },
     "dependencies": {
         "@angular/animations": "5.2.11",
@@ -39,6 +42,8 @@
     },
     "devDependencies": {
         "@ionic/app-scripts": "^3.2.1",
+        "electron": "^6.0.1",
+        "electron-builder": "^21.2.0",
         "typescript": "~2.6.2"
     },
     "description": "An Ionic project",
