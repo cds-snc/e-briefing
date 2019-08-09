@@ -17,7 +17,8 @@
       "@app/*" : ["app/*"],
       "@providers/*" : ["providers/*"],
       "@pages/*" : ["pages/*"]
-    }
+    },
+    "types": []
   },
   "include": [
     "src/**/*.ts"
