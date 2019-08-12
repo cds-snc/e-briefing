@@ -35,7 +35,9 @@ services:
        - "8080:80"
 
     app:
-      build: docker/php-fpm
+      build:
+        context: ./web
+        dockerfile: Dockerfile.development
       container_name: php-fpm
       working_dir: /application
       volumes:
