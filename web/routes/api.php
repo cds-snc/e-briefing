@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/trips/{trip}/download', 'Api\DownloadBinderPackageController')->middleware('auth:api');
+Route::get('/trips/{binder}/download', 'Api\DownloadBinderPackageController')->middleware('auth:api');
 
 Route::get('/events/{event}/participants/available', function (\App\Event $event) {
     return $event->available_participants;
