@@ -17,9 +17,29 @@ export class AppComponent {
       icon: 'home'
     },
     {
-      title: 'List',
-      url: '/list',
+      title: 'Itinerary',
+      url: '/days',
       icon: 'list'
+    },
+    {
+      title: 'Contacts',
+      url: '/contacts',
+      icon: 'contacts'
+    },
+    {
+      title: 'Documents',
+      url: '/documents',
+      icon: 'document'
+    },
+    {
+      title: 'Notes',
+      url: '/notes',
+      icon: 'create'
+    },
+    {
+      title: 'Sync',
+      url: '/sync',
+      icon: 'sync'
     }
   ];
 
