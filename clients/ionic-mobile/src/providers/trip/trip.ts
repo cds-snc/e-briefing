@@ -17,6 +17,6 @@ export class TripProvider {
         if (this.data) {
             return Promise.resolve(this.data);
         }
-        return this.fileReader.getJson('data/trip.json',this.data);
+        return this.fileReader.getJson('data/binder.json',this.data);
     }
 }
