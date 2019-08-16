@@ -1,5 +1,15 @@
 <app-header></app-header>
 
-<ion-content>
+<ion-content padding>
+    <h1>Documents</h1>
+
+    <div *ngFor="let key of keys">
+        <h2>{{ key }}</h2>
+        <ion-list>
+            <ion-item text-wrap *ngFor="let document of documents[key]" (click)="showDocument(document.id)">
+                <ion-icon name="document"></ion-icon> {{ document.name }}
+            </ion-item>
+        </ion-list>
+    </div>
 
 </ion-content>
