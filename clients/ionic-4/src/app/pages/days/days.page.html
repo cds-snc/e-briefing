@@ -1,5 +1,9 @@
 <app-header></app-header>
 
-<ion-content>
+<ion-content padding>
+    <h1>Schedule</h1>
 
+    <div *ngFor="let day of days" tappable (click)="goToDayPage(day.id)">
+        <h2>{{ day.date }} - {{ day.name }}</h2>
+    </div>
 </ion-content>
