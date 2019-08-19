@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { CLIENT_RENEG_LIMIT } from 'tls';
 
 @Component({
   selector: 'app-itinerary',
@@ -25,7 +24,6 @@ export class ItineraryComponent implements OnInit {
       .then(json => {
         this.itinerary = json;
         this.itineraryIsLoaded = true;
-        console.log(this.itinerary);
       });
   }
 }
