@@ -4,7 +4,7 @@
 
   <h1>Contacts</h1>
 
-  <div *ngFor="let contact of contacts" (click)="showContact(contact.id)">
+  <div *ngFor="let contact of contacts" [routerLink]="['/tabs/contacts', contact.id]">
     <h2>{{ contact.name }}</h2>
     <ion-grid>
       <ion-row *ngIf="contact.title != null">

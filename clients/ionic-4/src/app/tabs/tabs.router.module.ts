@@ -28,6 +28,11 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'documents/:id',
+        loadChildren: () =>
+          import('../pages/document/document.module').then(m => m.DocumentPageModule)
+      },
+      {
         path: 'days',
         children: [
           {
@@ -46,6 +51,11 @@ const routes: Routes = [
               import('../pages/contacts/contacts.module').then(m => m.ContactsPageModule)
           }
         ]
+      },
+      {
+        path: 'contacts/:id',
+        loadChildren: () =>
+          import('../pages/contact/contact.module').then(m => m.ContactPageModule)
       },
       {
         path: 'notes',

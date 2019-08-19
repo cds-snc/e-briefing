@@ -5,18 +5,18 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  },
-  { path: 'home', loadChildren: './pages/home/home.module#HomePageModule' },
-  { path: 'contact/:id', loadChildren: './pages/contact/contact.module#ContactPageModule' },
+  }
+  /* { path: 'home', loadChildren: './pages/home/home.module#HomePageModule' },
+  { path: 'contacts/:id', loadChildren: './pages/contact/contact.module#ContactPageModule' },
   { path: 'contacts', loadChildren: './pages/contacts/contacts.module#ContactsPageModule' },
-  { path: 'day/:id', loadChildren: './pages/day/day.module#DayPageModule' },
+  { path: 'days/:id', loadChildren: './pages/day/day.module#DayPageModule' },
   { path: 'days', loadChildren: './pages/days/days.module#DaysPageModule' },
   { path: 'documents', loadChildren: './pages/documents/documents.module#DocumentsPageModule' },
-  { path: 'event/:id', loadChildren: './pages/event/event.module#EventPageModule' },
-  { path: 'note/:id', loadChildren: './pages/note/note.module#NotePageModule' },
+  { path: 'events/:id', loadChildren: './pages/event/event.module#EventPageModule' },
+  { path: 'notes/:id', loadChildren: './pages/note/note.module#NotePageModule' },
   { path: 'notes', loadChildren: './pages/notes/notes.module#NotesPageModule' },
   { path: 'sync', loadChildren: './pages/sync/sync.module#SyncPageModule' },
-  { path: 'document/:id', loadChildren: './pages/document/document.module#DocumentPageModule' }
+  { path: 'document/:id', loadChildren: './pages/document/document.module#DocumentPageModule' } */
 ];
 @NgModule({
   imports: [
