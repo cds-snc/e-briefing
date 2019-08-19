@@ -5,5 +5,6 @@
 
     <div *ngFor="let day of days" tappable (click)="goToDayPage(day.id)">
         <h2>{{ day.date }} - {{ day.name }}</h2>
+        <app-itinerary [dayid]="day.id" [limit]="4"></app-itinerary>
     </div>
 </ion-content>
