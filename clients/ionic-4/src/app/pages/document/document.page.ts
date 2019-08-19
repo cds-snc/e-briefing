@@ -11,14 +11,13 @@ export class DocumentPage implements OnInit {
 
   id: any;
   document: any;
-  pdf: any;
+  pdf: string;
   public isPdfLoaded = false;
 
   constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
-    console.log(this.id);
 
     fetch(environment.data_directory + '/documents/' + this.id + '.json')
       .then(res => res.json())
@@ -28,5 +27,4 @@ export class DocumentPage implements OnInit {
         this.isPdfLoaded = true;
       });
   }
-
 }
