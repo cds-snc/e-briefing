@@ -6,7 +6,7 @@
     <div *ngFor="let key of keys">
         <h2>{{ key }}</h2>
         <ion-list>
-            <ion-item text-wrap *ngFor="let document of documents[key]" (click)="showDocument(document.id)">
+            <ion-item text-wrap *ngFor="let document of documents[key]" [routerLink]="['/document', document.id]">
                 <ion-icon name="document"></ion-icon> {{ document.name }}
             </ion-item>
         </ion-list>

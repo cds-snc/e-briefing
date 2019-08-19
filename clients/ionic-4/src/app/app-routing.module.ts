@@ -7,15 +7,16 @@ const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   { path: 'home', loadChildren: './pages/home/home.module#HomePageModule' },
-  { path: 'contact', loadChildren: './pages/contact/contact.module#ContactPageModule' },
+  { path: 'contact/:id', loadChildren: './pages/contact/contact.module#ContactPageModule' },
   { path: 'contacts', loadChildren: './pages/contacts/contacts.module#ContactsPageModule' },
-  { path: 'day', loadChildren: './pages/day/day.module#DayPageModule' },
+  { path: 'day/:id', loadChildren: './pages/day/day.module#DayPageModule' },
   { path: 'days', loadChildren: './pages/days/days.module#DaysPageModule' },
   { path: 'documents', loadChildren: './pages/documents/documents.module#DocumentsPageModule' },
-  { path: 'event', loadChildren: './pages/event/event.module#EventPageModule' },
-  { path: 'note', loadChildren: './pages/note/note.module#NotePageModule' },
+  { path: 'event/:id', loadChildren: './pages/event/event.module#EventPageModule' },
+  { path: 'note/:id', loadChildren: './pages/note/note.module#NotePageModule' },
   { path: 'notes', loadChildren: './pages/notes/notes.module#NotesPageModule' },
-  { path: 'sync', loadChildren: './pages/sync/sync.module#SyncPageModule' }
+  { path: 'sync', loadChildren: './pages/sync/sync.module#SyncPageModule' },
+  { path: 'document/:id', loadChildren: './pages/document/document.module#DocumentPageModule' }
 ];
 @NgModule({
   imports: [
@@ -23,4 +24,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
