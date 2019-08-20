@@ -4,7 +4,7 @@
     <h1>Notes</h1>
     <ion-card>
         <ion-list *ngIf="notes">
-            <ion-item *ngFor="let note of notes" [routerLink]="['/tabs/notes', note.id]">
+            <ion-item *ngFor="let note of notes" [routerLink]="['/notes', note.id]">
                 {{ note.title }}
             </ion-item>
         </ion-list>
