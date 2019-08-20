@@ -68,6 +68,11 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'notes/:id',
+        loadChildren: () =>
+          import('../pages/note/note.module').then(m => m.NotePageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/home',
         pathMatch: 'full'

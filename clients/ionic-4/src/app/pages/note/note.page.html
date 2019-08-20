@@ -1,5 +1,8 @@
 <app-header></app-header>
 
-<ion-content>
-
+<ion-content padding>
+    <div *ngIf="isNoteLoaded">
+        <h1>{{ note.title }}</h1>
+        <div [innerHTML]="note.body"></div>
+    </div>
 </ion-content>
