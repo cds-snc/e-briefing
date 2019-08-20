@@ -1,0 +1,24 @@
+<app-header></app-header>
+
+<ion-content padding>
+    <div *ngIf="contactIsLoaded">
+        <h1>{{ contact.name }}</h1>
+
+        <div [innerHTML]="contact.body_html"></div>
+
+        <ion-grid>
+            <ion-row>
+                <ion-col><strong>Role</strong></ion-col>
+                <ion-col>{{ contact.title }}</ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col><strong>Telephone</strong></ion-col>
+                <ion-col>{{ contact.telephone }}</ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col><strong>Email</strong></ion-col>
+                <ion-col>{{ contact.email }}</ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+</ion-content>

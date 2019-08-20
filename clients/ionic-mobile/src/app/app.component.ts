@@ -28,7 +28,7 @@ export class MyApp {
 
     checkDataExists() {
         if (!this.platform.is('core')) {
-            this.file.checkFile(this.globals.dataDirectory, 'data/trip.json').then(dir =>
+            this.file.checkFile(this.globals.dataDirectory, 'data/binder.json').then(dir =>
                 this.rootPage = TabsPage
             ).catch(err =>
                 this.rootPage = SyncPage

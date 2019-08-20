@@ -1,0 +1,12 @@
+<app-header></app-header>
+
+<ion-content padding>
+
+  <h1 *ngIf="isPdfLoaded">{{ document.name }}</h1>
+
+  <div *ngIf="isPdfLoaded" style="height: 100%">
+    <ng2-pdfjs-viewer [pdfSrc]="pdf" [print]="true" [fullScreen]="true" [find]="true" scroll="horizontal">
+    </ng2-pdfjs-viewer>
+  </div>
+
+</ion-content>

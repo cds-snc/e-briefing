@@ -1,0 +1,8 @@
+<div *ngIf="itineraryIsLoaded">
+  <div *ngFor="let item of itinerary.events | slice:0:limit; let i=index">
+    {{ item.time_from }} - {{ item.time_to }} | {{ item.title }}
+  </div>
+  <div *ngIf="itinerary.events.length > limit">
+    <ion-button color="primary">View more</ion-button>
+  </div>
+</div>

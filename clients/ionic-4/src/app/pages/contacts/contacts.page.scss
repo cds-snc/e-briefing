@@ -1,0 +1,7 @@
+ion-grid {
+    border-bottom: 1px solid grey;
+}
+
+ion-row:not(:last-child) {
+    border-bottom: 2px dashed grey;
+}
