@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from '../../../environments/environment';
 
 @Component({
-  selector: 'app-days',
-  templateUrl: './days.page.html',
-  styleUrls: ['./days.page.scss'],
+  selector: 'app-itinerary',
+  templateUrl: './itinerary.page.html',
+  styleUrls: ['./itinerary.page.scss'],
 })
-export class DaysPage implements OnInit {
+export class ItineraryPage implements OnInit {
 
   days: any;
   binder: any;

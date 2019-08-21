@@ -1,0 +1,12 @@
+<app-header></app-header>
+
+<ion-content padding>
+  <h1>Schedule</h1>
+
+  <div *ngFor="let day of days">
+    <h2>{{ day.date }} - {{ day.name }}</h2>
+    <app-schedule [dayid]="day.id" [limit]="4"></app-schedule>
+  </div>
+</ion-content>
+
+<app-footer></app-footer>

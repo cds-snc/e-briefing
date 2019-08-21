@@ -2,11 +2,11 @@ import { Component, OnInit, Input } from '@angular/core';
 import { environment } from '../../../environments/environment';
 
 @Component({
-  selector: 'app-itinerary',
-  templateUrl: './itinerary.component.html',
-  styleUrls: ['./itinerary.component.scss'],
+  selector: 'app-schedule',
+  templateUrl: './schedule.component.html',
+  styleUrls: ['./schedule.component.scss'],
 })
-export class ItineraryComponent implements OnInit {
+export class ScheduleComponent implements OnInit {
 
   @Input('dayid') dayid;
   @Input('limit') limit;
@@ -17,8 +17,6 @@ export class ItineraryComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.dayid);
-
     fetch(environment.data_directory + '/days/' + this.dayid + '.json')
       .then(res => res.json())
       .then(json => {

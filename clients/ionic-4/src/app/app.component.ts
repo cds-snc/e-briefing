@@ -18,8 +18,8 @@ export class AppComponent {
     },
     {
       title: 'Itinerary',
-      url: '/days',
-      icon: 'list'
+      url: '/itinerary',
+      icon: 'calendar'
     },
     {
       title: 'People',

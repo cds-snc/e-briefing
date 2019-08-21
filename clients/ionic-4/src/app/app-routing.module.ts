@@ -11,7 +11,6 @@ const routes: Routes = [
   { path: 'contacts/:id', loadChildren: './pages/contact/contact.module#ContactPageModule' },
   { path: 'contacts', loadChildren: './pages/contacts/contacts.module#ContactsPageModule' },
   { path: 'days/:id', loadChildren: './pages/day/day.module#DayPageModule' },
-  { path: 'days', loadChildren: './pages/days/days.module#DaysPageModule' },
   { path: 'documents', loadChildren: './pages/documents/documents.module#DocumentsPageModule' },
   { path: 'events/:id', loadChildren: './pages/event/event.module#EventPageModule' },
   { path: 'notes/:id', loadChildren: './pages/note/note.module#NotePageModule' },
@@ -20,7 +19,8 @@ const routes: Routes = [
   { path: 'documents/:id', loadChildren: './pages/document/document.module#DocumentPageModule' },
   { path: 'terms', loadChildren: './pages/terms/terms.module#TermsPageModule' },
   { path: 'privacy', loadChildren: './pages/privacy/privacy.module#PrivacyPageModule' },
-  { path: 'about-cds', loadChildren: './pages/about-cds/about-cds.module#AboutCdsPageModule' }
+  { path: 'about-cds', loadChildren: './pages/about-cds/about-cds.module#AboutCdsPageModule' },
+  { path: 'itinerary', loadChildren: './pages/itinerary/itinerary.module#ItineraryPageModule' }
 ];
 @NgModule({
   imports: [
