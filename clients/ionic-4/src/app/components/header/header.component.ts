@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IonRouterOutlet } from '@ionic/angular';
 
 @Component({
   selector: 'app-header',
@@ -7,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private ionRouterOutlet: IonRouterOutlet) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
+
+  canGoBack(): boolean {
+    return this.ionRouterOutlet.canGoBack();
+  }
 
 }

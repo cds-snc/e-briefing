@@ -14,3 +14,13 @@
     border-radius: 50%;
     padding: 4px;
 }
+
+ion-back-button {
+    --background-focused: #fff;
+    --background-hover: #fff;
+    --padding-start: 0;
+    --padding-end: 0;
+    text-transform: none;
+    width: 75px;
+    font-size: .8em;
+}
