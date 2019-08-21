@@ -11,21 +11,21 @@
             <ion-row>
                 <ion-col size="2"><strong>Location</strong></ion-col>
                 <ion-col>
-                    {{ event.location_name }}
-                    {{ event.location_address }}
+                    {{ event.location_name }}<br>
+                    {{ event.location_address }}<br>
                     {{ event.location_postal }}
                 </ion-col>
             </ion-row>
             <ion-row>
                 <ion-col size="2"><strong>Description</strong></ion-col>
                 <ion-col>
-                    <div [innerHTML]="event.description_html"></div>
+                    <span [innerHTML]="event.description_html"></span>
                     <strong *ngIf="event.body_html">Details</strong>
-                    <div [innerHTML]="event.body_html"></div>
+                    <span [innerHTML]="event.body_html"></span>
                 </ion-col>
             </ion-row>
-            <ion-row>
-                <ion-col size="2"><strong>Contacts</strong></ion-col>
+            <ion-row *ngIf="event.contacts">
+                <ion-col size="2"><strong>Contact(s)</strong></ion-col>
                 <ion-col>
                     <div *ngIf="event.contacts">
                         <ul class="participants">
