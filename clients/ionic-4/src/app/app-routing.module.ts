@@ -17,7 +17,10 @@ const routes: Routes = [
   { path: 'notes/:id', loadChildren: './pages/note/note.module#NotePageModule' },
   { path: 'notes', loadChildren: './pages/notes/notes.module#NotesPageModule' },
   { path: 'sync', loadChildren: './pages/sync/sync.module#SyncPageModule' },
-  { path: 'documents/:id', loadChildren: './pages/document/document.module#DocumentPageModule' }
+  { path: 'documents/:id', loadChildren: './pages/document/document.module#DocumentPageModule' },
+  { path: 'terms', loadChildren: './pages/terms/terms.module#TermsPageModule' },
+  { path: 'privacy', loadChildren: './pages/privacy/privacy.module#PrivacyPageModule' },
+  { path: 'about-cds', loadChildren: './pages/about-cds/about-cds.module#AboutCdsPageModule' }
 ];
 @NgModule({
   imports: [
