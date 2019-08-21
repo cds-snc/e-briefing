@@ -1,22 +1,21 @@
 <app-header></app-header>
 
 <ion-content padding>
-
   <h1>Contacts</h1>
 
-  <div *ngFor="let contact of contacts" [routerLink]="['/contacts', contact.id]">
-    <h2>{{ contact.name }}</h2>
+  <div class="contact" *ngFor="let contact of contacts" [routerLink]="['/contacts', contact.id]">
+    <h2><a>{{ contact.name }}</a></h2>
     <ion-grid>
       <ion-row *ngIf="contact.title != null">
-        <ion-col><strong>Role</strong></ion-col>
+        <ion-col size="2"><strong>Role</strong></ion-col>
         <ion-col>{{ contact.title }}</ion-col>
       </ion-row>
       <ion-row *ngIf="contact.telephone != null">
-        <ion-col><strong>Telephone</strong></ion-col>
+        <ion-col size="2"><strong>Telephone</strong></ion-col>
         <ion-col>{{ contact.telephone }}</ion-col>
       </ion-row>
       <ion-row *ngIf="contact.email != null">
-        <ion-col><strong>Email</strong></ion-col>
+        <ion-col size="2"><strong>Email</strong></ion-col>
         <ion-col>{{ contact.email }}</ion-col>
       </ion-row>
     </ion-grid>

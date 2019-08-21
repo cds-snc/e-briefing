@@ -1,7 +1,9 @@
-ion-grid {
-    border-bottom: 1px solid grey;
+div.contact {
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #ddd;
 }
 
-ion-row:not(:last-child) {
-    border-bottom: 2px dashed grey;
+h2 a {
+    text-decoration: underline;
 }
