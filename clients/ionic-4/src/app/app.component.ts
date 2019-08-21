@@ -22,7 +22,7 @@ export class AppComponent {
       icon: 'list'
     },
     {
-      title: 'Contacts',
+      title: 'People',
       url: '/contacts',
       icon: 'contacts'
     },
