@@ -1,7 +1,29 @@
 <app-header></app-header>
 
 <ion-content padding>
+    <div *ngIf="scheduleIsLoaded">
+        <h1>{{ schedule.date }} - {{ schedule.name }}</h1>
 
+        <div *ngFor="let event of schedule.events">
+            <h2><a [routerLink]="['/events', event.id]">{{ event.title }}</a></h2>
+            <ion-grid>
+                <ion-row>
+                    <ion-col><strong>Time</strong></ion-col>
+                    <ion-col>{{ event.time_from }} - {{ event.time_to }}</ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col><strong>Location</strong></ion-col>
+                    <ion-col>{{ event.location_name }}</ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col><strong>Attendees</strong></ion-col>
+                    <ion-col>
+                        Need to get attendees
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+    </div>
 </ion-content>
 
 <app-footer></app-footer>
