@@ -5,6 +5,7 @@ import { ScheduleComponent } from './schedule/schedule.component';
 
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     declarations: [
@@ -14,7 +15,8 @@ import { CommonModule } from '@angular/common';
     ],
     imports: [
         IonicModule,
-        CommonModule
+        CommonModule,
+        RouterModule
     ],
     exports: [
         HeaderComponent,

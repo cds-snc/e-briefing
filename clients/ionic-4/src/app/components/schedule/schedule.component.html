@@ -1,8 +1,11 @@
 <div *ngIf="itineraryIsLoaded">
-  <div *ngFor="let item of itinerary.events | slice:0:limit; let i=index">
-    {{ item.time_from }} - {{ item.time_to }} | {{ item.title }}
-  </div>
-  <div *ngIf="itinerary.events.length > limit">
-    <ion-button color="primary">View more</ion-button>
+  <ion-list lines="none">
+    <ion-item [routerLink]="['/events', item.id]" *ngFor="let item of itinerary.events | slice:0:limit; let i=index">
+      <ion-icon name="calendar"></ion-icon>
+      <ion-label>{{ item.time_from }} - {{ item.time_to }} | {{ item.title }}</ion-label>
+    </ion-item>
+  </ion-list>
+  <div class="view-more" *ngIf="itinerary.events.length > limit">
+    <ion-button color="primary" [routerLink]="['/days', itinerary.id]">View more</ion-button>
   </div>
 </div>
