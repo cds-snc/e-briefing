@@ -34,7 +34,7 @@ export class AppComponent {
     {
       title: 'Notes',
       url: '/notes',
-      icon: 'create'
+      icon: 'paper'
     },
     {
       title: 'Sync',
