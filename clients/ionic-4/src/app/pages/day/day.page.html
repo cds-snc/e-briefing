@@ -5,20 +5,29 @@
         <h1>{{ schedule.date }} - {{ schedule.name }}</h1>
 
         <div *ngFor="let event of schedule.events">
-            <h2><a [routerLink]="['/events', event.id]">{{ event.title }}</a></h2>
+            <h2>
+                <ion-icon name="restaurant" *ngIf="event.is_meal"></ion-icon>
+                <a [routerLink]="['/events', event.id]">{{ event.title }}</a>
+            </h2>
             <ion-grid>
                 <ion-row>
-                    <ion-col><strong>Time</strong></ion-col>
+                    <ion-col size="3"><strong>Time</strong></ion-col>
                     <ion-col>{{ event.time_from }} - {{ event.time_to }}</ion-col>
                 </ion-row>
                 <ion-row>
-                    <ion-col><strong>Location</strong></ion-col>
+                    <ion-col size="3"><strong>Location</strong></ion-col>
                     <ion-col>{{ event.location_name }}</ion-col>
                 </ion-row>
-                <ion-row>
-                    <ion-col><strong>Attendees</strong></ion-col>
+                <ion-row *ngIf="event.participants.length">
+                    <ion-col size="3"><strong>Participants</strong></ion-col>
                     <ion-col>
-                        Need to get attendees
+                        <ul class="participants">
+                            <li *ngFor="let person of event.participants">
+                                <a [routerLink]="['/contacts', person.id]">
+                                    <ion-icon name="person"></ion-icon> {{ person.name }}
+                                </a>
+                            </li>
+                        </ul>
                     </ion-col>
                 </ion-row>
             </ion-grid>

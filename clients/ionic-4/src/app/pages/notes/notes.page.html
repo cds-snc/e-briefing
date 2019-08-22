@@ -2,13 +2,13 @@
 
 <ion-content padding>
     <h1>Notes</h1>
-    <ion-card>
-        <ion-list *ngIf="notes">
-            <ion-item *ngFor="let note of notes" [routerLink]="['/notes', note.id]">
-                {{ note.title }}
-            </ion-item>
-        </ion-list>
-    </ion-card>
+
+    <ion-list *ngIf="notes">
+        <ion-item *ngFor="let note of notes" [routerLink]="['/notes', note.id]">
+            <ion-icon name="paper"></ion-icon> {{ note.title }}
+        </ion-item>
+    </ion-list>
+
 </ion-content>
 
 <app-footer></app-footer>
