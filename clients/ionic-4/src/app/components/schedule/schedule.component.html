@@ -2,7 +2,9 @@
   <ion-list lines="none">
     <ion-item [routerLink]="['/events', item.id]" *ngFor="let item of itinerary.events | slice:0:limit; let i=index">
       <ion-icon name="calendar"></ion-icon>
-      <ion-label>{{ item.time_from }} - {{ item.time_to }} | {{ item.title }}</ion-label>
+      <ion-label>{{ item.time_from }} - {{ item.time_to }} | {{ item.title }}
+        <ion-icon name="restaurant" *ngIf="item.is_meal"></ion-icon>
+      </ion-label>
     </ion-item>
   </ion-list>
   <div class="view-more" *ngIf="itinerary.events.length > limit">
