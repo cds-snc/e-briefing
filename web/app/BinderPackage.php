@@ -67,7 +67,7 @@ class BinderPackage
 
     protected function generateDayJson(Day $day)
     {
-        $json = Day::with('events')->find($day->id)->toJson();
+        $json = Day::with('events', 'events.contacts', 'events.participants')->find($day->id)->toJson();
 
         Storage::put($this->storage_path . '/days/' . $day->id . '.json', $json);
     }
