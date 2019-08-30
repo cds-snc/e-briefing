@@ -10,6 +10,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { PdfJsViewerModule } from 'ng2-pdfjs-viewer';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,7 +20,8 @@ import { PdfJsViewerModule } from 'ng2-pdfjs-viewer';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    PdfJsViewerModule
+    PdfJsViewerModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     StatusBar,
