@@ -18,8 +18,8 @@
     "lodash": "^4.17.15",
     "popper.js": "^1.12",
     "resolve-url-loader": "^2.3.2",
-    "sass": "^1.15.2",
-    "sass-loader": "^7.1.0",
+    "sass": "^1.22.10",
+    "sass-loader": "^7.3.1",
     "vue": "^2.5.17",
     "vue-template-compiler": "^2.6.10"
   },
@@ -28,6 +28,6 @@
     "bulma": "^0.5.1",
     "es6-promise": "^4.2.8",
     "font-awesome": "^4.7.0",
-    "marked": "^0.3.17"
+    "marked": "^0.7.0"
   }
 }
