@@ -6,17 +6,28 @@
   <div class="contact" *ngFor="let contact of contacts" [routerLink]="['/contacts', contact.id]">
     <h2><a>{{ contact.name }}</a></h2>
     <ion-grid>
-      <ion-row *ngIf="contact.title != null">
-        <ion-col size="2"><strong>Role</strong></ion-col>
-        <ion-col>{{ contact.title }}</ion-col>
-      </ion-row>
-      <ion-row *ngIf="contact.telephone != null">
-        <ion-col size="2"><strong>Telephone</strong></ion-col>
-        <ion-col>{{ contact.telephone }}</ion-col>
-      </ion-row>
-      <ion-row *ngIf="contact.email != null">
-        <ion-col size="2"><strong>Email</strong></ion-col>
-        <ion-col>{{ contact.email }}</ion-col>
+      <ion-row>
+        <ion-col size="8">
+          <ion-grid>
+            <ion-row *ngIf="contact.title != null">
+              <ion-col size="2"><strong>Role</strong></ion-col>
+              <ion-col>{{ contact.title }}</ion-col>
+            </ion-row>
+            <ion-row *ngIf="contact.telephone != null">
+              <ion-col size="2"><strong>Telephone</strong></ion-col>
+              <ion-col>{{ contact.telephone }}</ion-col>
+            </ion-row>
+            <ion-row *ngIf="contact.email != null">
+              <ion-col size="2"><strong>Email</strong></ion-col>
+              <ion-col>{{ contact.email }}</ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-col>
+        <ion-col>
+          <div *ngIf="contact.image">
+              <img src="assets/data/assets/{{ contact.image }}" class="contact-image">
+          </div>
+        </ion-col>
       </ion-row>
     </ion-grid>
   </div>
