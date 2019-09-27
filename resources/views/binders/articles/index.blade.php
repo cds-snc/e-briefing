@@ -30,19 +30,19 @@
         @endpush
 
         <div class="column">
-            <h1 class="title">{{ $binder->name }} "My Trip"
+            <h1 class="title">{{ $binder->name }} Notes
                 <a href="{{ route('binders.articles.create', $binder) }}" class="is-size-6">
                     <span class="icon">
                         <i class="fa fa-plus-circle"></i>
                     </span>
-                    Add an Article
+                    Add a Note
                 </a>
             </h1>
 
             @include('layouts.flash')
 
             @unless($binder->articles->count())
-                There are no Articles added to this Binder yet!
+                There are no Notes added to this Binder yet!
             @endunless
 
             @foreach($articles as $article)
