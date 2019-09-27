@@ -2,6 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DocumentPage } from './document.page';
+import { RouterModule } from '@angular/router';
 
 describe('DocumentPage', () => {
   let component: DocumentPage;
@@ -9,10 +10,11 @@ describe('DocumentPage', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DocumentPage ],
+      declarations: [DocumentPage],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      imports: [RouterModule.forRoot([])]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

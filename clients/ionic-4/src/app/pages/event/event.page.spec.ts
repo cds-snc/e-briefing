@@ -2,6 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EventPage } from './event.page';
+import { RouterModule } from '@angular/router';
 
 describe('EventPage', () => {
   let component: EventPage;
@@ -9,10 +10,11 @@ describe('EventPage', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EventPage ],
+      declarations: [EventPage],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      imports: [RouterModule.forRoot([])]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
