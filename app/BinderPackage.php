@@ -84,7 +84,7 @@ class BinderPackage
         $json = $document->toJson();
 
         Storage::put($this->storage_path . '/documents/' . $document->id . '.json', $json);
-        Storage::copy('public/' . $document->file, $this->storage_path . '/assets/' . $document->file);
+        Storage::copy('public/storage/' . $document->file, $this->storage_path . '/assets/' . $document->file);
     }
 
     protected function generateEventJson(Event $event)
@@ -122,7 +122,7 @@ class BinderPackage
         Storage::put($this->storage_path . '/people/' . $person->id . '.json', $json);
 
         if ($person->image) {
-            Storage::copy('public/' . $person->image, $this->storage_path . '/assets/' . $person->image);
+            Storage::copy('public/storage/' . $person->image, $this->storage_path . '/assets/' . $person->image);
         }
     }
 
