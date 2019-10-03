@@ -8,45 +8,60 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
+        path: 'documents',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../tab1/tab1.module').then(m => m.Tab1PageModule)
+              import('../pages/documents/documents.module').then(m => m.DocumentsPageModule)
           }
         ]
       },
       {
-        path: 'tab2',
+        path: 'documents/:id',
+        loadChildren: () =>
+          import('../pages/document/document.module').then(m => m.DocumentPageModule)
+      },
+      {
+        path: 'contacts',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+              import('../pages/contacts/contacts.module').then(m => m.ContactsPageModule)
           }
         ]
       },
       {
-        path: 'tab3',
+        path: 'contacts/:id',
+        loadChildren: () =>
+          import('../pages/contact/contact.module').then(m => m.ContactPageModule)
+      },
+      {
+        path: 'notes',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+              import('../pages/notes/notes.module').then(m => m.NotesPageModule)
           }
         ]
+      },
+      {
+        path: 'notes/:id',
+        loadChildren: () =>
+          import('../pages/note/note.module').then(m => m.NotePageModule)
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/documents',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/documents',
     pathMatch: 'full'
   }
 ];
@@ -55,4 +70,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class TabsPageRoutingModule {}
+export class TabsPageRoutingModule { }

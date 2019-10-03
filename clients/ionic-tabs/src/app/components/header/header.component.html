@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title slot="start" class="fip">
+      <img src="/assets/images/goc--header-logo.svg">
+    </ion-title>
+  </ion-toolbar>
+  <ion-toolbar color="light">
+    <span class="beta-tag">BETA</span>
+    <span>This is a new service - your feedback will help us improve it</span>
+  </ion-toolbar>
+</ion-header>
+
+<div class="back-button">
+  <ion-back-button *ngIf="canGoBack()" defaultHref="home" text="Back" icon="ios-arrow-back"></ion-back-button>
+</div>

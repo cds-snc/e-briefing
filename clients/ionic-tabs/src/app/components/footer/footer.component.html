@@ -1,0 +1,21 @@
+<ion-footer class="footer">
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-button routerLink="/documents" [routerDirection]="'root'">
+        <ion-icon name="document"></ion-icon>
+        Documents
+      </ion-button>
+      <ion-button routerLink="/contacts" [routerDirection]="'root'">
+        <ion-icon name="person"></ion-icon>
+        People
+      </ion-button>
+      <ion-button routerLink="/notes" [routerDirection]="'root'">
+        <ion-icon name="list"></ion-icon>
+        Notes
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <div slot="end" class="ca-wordmark">
+    <img src="/assets/images/goc--footer-logo.svg">
+  </div>
+</ion-footer>

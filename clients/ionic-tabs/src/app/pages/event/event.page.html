@@ -1,0 +1,70 @@
+<app-header></app-header>
+
+<ion-content padding>
+    <div *ngIf="eventIsLoaded">
+        <h1>
+            <ion-icon name="restaurant" *ngIf="event.is_meal"></ion-icon> {{ event.title }}
+        </h1>
+        <ion-grid>
+            <ion-row>
+                <ion-col size="2"><strong>Time</strong></ion-col>
+                <ion-col>{{ event.time_from }} - {{ event.time_to }}</ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="2"><strong>Location</strong></ion-col>
+                <ion-col>
+                    {{ event.location_name }}<br>
+                    {{ event.location_address }}<br>
+                    {{ event.location_postal }}
+                </ion-col>
+            </ion-row>
+            <ion-row *ngIf="event.description_html || event.body_html">
+                <ion-col size="2"><strong>Description</strong></ion-col>
+                <ion-col>
+                    <span [innerHTML]="event.description_html"></span>
+                    <strong *ngIf="event.body_html">Details</strong>
+                    <span [innerHTML]="event.body_html"></span>
+                </ion-col>
+            </ion-row>
+            <ion-row *ngIf="event.contacts.length">
+                <ion-col size="2"><strong>Contact(s)</strong></ion-col>
+                <ion-col>
+                    <div *ngIf="event.contacts">
+                        <ul class="participants">
+                            <li *ngFor="let person of event.contacts">
+                                <a [routerLink]="['/contacts', person.id]">
+                                    <p>{{ person.name }}<br>
+                                        {{ person.telephone }}<br>
+                                        {{ person.email }}</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </ion-col>
+            </ion-row>
+            <ion-row *ngIf="event.participants.length">
+                <ion-col size="2"><strong>Participants</strong></ion-col>
+                <ion-col>
+                    <ul class="participants">
+                        <li *ngFor="let person of event.participants">
+                            <a [routerLink]="['/contacts', person.id]">
+                                <ion-icon name="person"></ion-icon> {{ person.name }}
+                            </a>
+                        </li>
+                    </ul>
+                </ion-col>
+            </ion-row>
+            <ion-row *ngIf="event.documents.length">
+                <ion-col size="2"><strong>Documents</strong></ion-col>
+                <ion-col>
+                    <ion-list lines="none">
+                        <ion-item text-wrap *ngFor="let document of event.documents"
+                            [routerLink]="['/documents', document.id]">
+                            <ion-icon name="document"></ion-icon> {{ document.name }}
+                        </ion-item>
+                    </ion-list>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+</ion-content>

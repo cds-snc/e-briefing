@@ -1,0 +1,10 @@
+<app-header></app-header>
+
+<ion-content padding>
+  <h1>Itinerary</h1>
+
+  <div *ngFor="let day of days">
+    <h2><a [routerLink]="['/days', day.id]">{{ day.date }} - {{ day.name }}</a></h2>
+    <app-schedule [dayid]="day.id" [limit]="4"></app-schedule>
+  </div>
+</ion-content>

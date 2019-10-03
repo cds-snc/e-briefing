@@ -1,0 +1,12 @@
+<app-header></app-header>
+
+<ion-content padding>
+    <h1>Notes</h1>
+
+    <ion-list *ngIf="notes">
+        <ion-item *ngFor="let note of notes" [routerLink]="['/tabs/notes', note.id]">
+            <ion-icon name="paper"></ion-icon> {{ note.title }}
+        </ion-item>
+    </ion-list>
+
+</ion-content>

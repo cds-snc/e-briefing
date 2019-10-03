@@ -1,0 +1,36 @@
+.fip {
+    text-align: left;
+    padding-left: 1em;
+}
+
+.fip img {
+    max-height: 30px;
+    max-width: 250px;
+}
+
+.beta-tag {
+    border: 2px solid black;
+    padding: 5px;
+    margin: 0 15px;
+}
+
+/*
+.menu-button {
+    border: 1px solid white;
+    border-radius: 50%;
+    padding: 4px;
+} */
+
+.back-button {
+    margin-top: 10px;
+}
+
+ion-back-button {
+    --background-focused: #fff;
+    --background-hover: #fff;
+    --padding-start: 0;
+    --padding-end: 0;
+    text-transform: none;
+    width: 75px;
+    font-size: .8em;
+}
