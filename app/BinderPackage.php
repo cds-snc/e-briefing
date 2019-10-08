@@ -74,7 +74,7 @@ class BinderPackage
 
     protected function generateDocumentsJson(Binder $binder)
     {
-        $documents = $binder->documents->groupBy('document_type');
+        $documents = $binder->documents->sortBy('name', SORT_NATURAL)->groupBy('document_type');
 
         Storage::put($this->storage_path . '/documents.json', $documents->toJson());
     }
