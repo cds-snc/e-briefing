@@ -64,7 +64,7 @@ RUN docker-php-ext-install gd
 RUN groupadd -g 1000 www
 RUN useradd -u 1000 -ms /bin/bash -g www www
 
-COPY --chown=www:www . /var/www
+COPY --chown=www:www . /application
 COPY --chown=www:www --from=vendor /app/vendor/ /application/vendor/
 COPY --chown=www:www --from=frontend /app/public/js/ /application/public/js/
 COPY --chown=www:www --from=frontend /app/public/css/ /application/public/css/
