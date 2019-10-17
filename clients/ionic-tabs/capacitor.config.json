@@ -1,0 +1,7 @@
+{
+  "appId": "io.cds.brief",
+  "appName": "eBriefing",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}
