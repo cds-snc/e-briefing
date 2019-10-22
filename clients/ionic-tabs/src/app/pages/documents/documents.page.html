@@ -1,11 +1,11 @@
 <app-header></app-header>
 
-<ion-content padding>
+<ion-content class="ion-padding">
     <h1>Documents</h1>
 
     <div *ngFor="let key of keys">
         <ion-list>
-            <ion-item text-wrap *ngFor="let document of documents[key]" [routerLink]="['/tabs/documents', document.id]">
+            <ion-item class="ion-text-wrap" *ngFor="let document of documents[key]"  (click)="showDocument(document.id)">
                 <ion-icon name="document"></ion-icon> {{ document.name }}
             </ion-item>
         </ion-list>
