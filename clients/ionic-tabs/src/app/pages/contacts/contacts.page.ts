@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { environment } from '../../../environments/environment';
+import { Platform } from '@ionic/angular';
+import { GlobalsService } from 'src/app/services/globals.service';
+import { File } from '@ionic-native/file/ngx';
+import { WebView } from '@ionic-native/ionic-webview/ngx';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-contacts',
@@ -8,15 +12,40 @@ import { environment } from '../../../environments/environment';
 })
 export class ContactsPage implements OnInit {
   contacts: any;
+  imgPath: string;
 
-  constructor() { }
+  constructor(
+    private platform: Platform,
+    private globals: GlobalsService,
+    private file: File,
+    private webview: WebView,
+    private sanitizer: DomSanitizer
+  ) { }
 
-  ngOnInit() {
-    fetch(environment.data_directory + '/people.json')
-      .then(res => res.json())
-      .then(json => {
-        this.contacts = json;
-      });
+  ngOnInit() { }
+
+  async ionViewWillEnter() {
+    await this.platform.ready();
+
+    this.imgPath = this.webview.convertFileSrc(this.globals.dataDirectory + 'assets/');
+
+    await this.file.checkFile(this.globals.dataDirectory, 'people.json')
+      .then(_ => console.log('People.json exists'))
+      .catch(err => console.log(err));
+
+    this.file.readAsText(this.globals.dataDirectory, 'people.json').then(res => {
+      this.contacts = JSON.parse(res);
+    });
+  }
+
+  pathForImage(img) {
+    if (img === null) {
+      return '';
+    } else {
+      const converted = this.webview.convertFileSrc(this.globals.dataDirectory + 'assets/' + img);
+      const safeImg = this.sanitizer.bypassSecurityTrustUrl(converted);
+      return safeImg;
+    }
   }
 
 }

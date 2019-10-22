@@ -12,6 +12,7 @@ import { File } from '@ionic-native/file/ngx';
 import { Zip } from '@ionic-native/zip/ngx';
 
 import { DocumentViewer } from '@ionic-native/document-viewer/ngx';
+import { WebView } from '@ionic-native/ionic-webview/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,6 +25,7 @@ import { DocumentViewer } from '@ionic-native/document-viewer/ngx';
     File,
     Zip,
     DocumentViewer,
+    WebView
   ],
   bootstrap: [AppComponent]
 })

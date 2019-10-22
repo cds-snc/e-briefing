@@ -5,7 +5,7 @@
         <h1>{{ contact.name }}</h1>
 
         <div *ngIf="contact.image">
-            <img src="assets/data/assets/{{ contact.image }}" class="contact-image">
+            <img [src]="pathForImage(contact.image)" class="contact-image">
         </div>
 
         <div [innerHTML]="contact.body_html"></div>

@@ -25,7 +25,7 @@
         </ion-col>
         <ion-col>
           <div *ngIf="contact.image">
-              <img src="assets/data/assets/{{ contact.image }}" class="contact-image">
+              <img [src]="pathForImage(contact.image)" class="contact-image">
           </div>
         </ion-col>
       </ion-row>
