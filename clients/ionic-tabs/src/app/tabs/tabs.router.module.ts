@@ -53,6 +53,11 @@ const routes: Routes = [
           import('../pages/note/note.module').then(m => m.NotePageModule)
       },
       {
+        path: 'sync',
+        loadChildren: () =>
+          import('../pages/sync/sync.module').then(m => m.SyncPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/documents',
         pathMatch: 'full'
