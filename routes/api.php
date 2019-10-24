@@ -15,6 +15,10 @@ use Illuminate\Http\Request;
 
 Route::get('/trips/{binder}/download', 'Api\DownloadBinderPackageController')->middleware('auth:api');
 
+Route::get('/trips/{binder}/file_list', 'Api\BinderFileListController')->middleware('auth:api');
+
+Route::get('/trips/{binder}/get_file', 'Api\BinderGetFileController')->middleware('auth:api');
+
 Route::get('/events/{event}/participants/available', function (\App\Event $event) {
     return $event->available_participants;
 });
