@@ -1,18 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { LoadingController } from '@ionic/angular';
-import { environment } from 'src/environments/environment';
-import { File } from '@ionic-native/file/ngx';
-import { Zip } from '@ionic-native/zip/ngx';
-import { GlobalsService } from 'src/app/services/globals.service';
-import { Router } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { LoadingController } from "@ionic/angular";
+import { environment } from "src/environments/environment";
+import { File } from "@ionic-native/file/ngx";
+import { Zip } from "@ionic-native/zip/ngx";
+import { GlobalsService } from "src/app/services/globals.service";
+import { Router } from "@angular/router";
+import { syncSingleFiles } from "./utils";
 
 @Component({
-  selector: 'app-sync',
-  templateUrl: './sync.page.html',
-  styleUrls: ['./sync.page.scss'],
+  selector: "app-sync",
+  templateUrl: "./sync.page.html",
+  styleUrls: ["./sync.page.scss"]
 })
 export class SyncPage implements OnInit {
-
   loading: any;
 
   constructor(
@@ -21,14 +21,13 @@ export class SyncPage implements OnInit {
     private zip: Zip,
     private globals: GlobalsService,
     private router: Router
-  ) { }
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   async presentLoading() {
     this.loading = await this.loadingController.create({
-      message: 'Attempting to sync data...',
+      message: "Attempting to sync data...",
       duration: 10000
     });
 
@@ -38,6 +37,9 @@ export class SyncPage implements OnInit {
   async syncData() {
     await this.presentLoading();
 
+    syncSingleFiles(this.file);
+
+    /*
     const token = environment.api_key;
     const url = environment.api_url + '/trips/' + environment.trip_id + '/download';
 
@@ -59,5 +61,6 @@ export class SyncPage implements OnInit {
     }).catch(err => {
       console.log(err);
     });
+    */
   }
 }
