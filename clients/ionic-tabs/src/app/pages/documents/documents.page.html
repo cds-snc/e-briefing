@@ -6,7 +6,7 @@
     <div *ngFor="let key of keys">
         <ion-list>
             <ion-item class="ion-text-wrap" *ngFor="let document of documents[key]"  (click)="showDocument(document.id)">
-                <ion-icon name="document"></ion-icon> {{ document.name }}
+                <ion-icon name="document"></ion-icon> <ion-label>{{ document.name }}</ion-label>
             </ion-item>
         </ion-list>
     </div>
