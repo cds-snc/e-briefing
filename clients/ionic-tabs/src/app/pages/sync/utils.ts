@@ -1,79 +1,69 @@
 import { environment } from "src/environments/environment";
+import { FileTransferObject } from "@ionic-native/file-transfer/ngx";
 import { File } from "@ionic-native/file/ngx";
 
-interface FileContent {
-  file: string;
-  type: string;
-  buffer: any;
+interface EndPoint {
+  url: string;
+  token: string;
 }
 
-const fetchTripEndpoint = async (path: string): Promise<Response> => {
-  const token = environment.api_key;
-  const url = environment.api_url + `/trips/${environment.trip_id}/${path}`;
+const asyncForEach = async (
+  array: [],
+  callback: (arr: [], index: number, array: []) => {}
+) => {
+  for (let index = 0; index < array.length; index++) {
+    await callback(array[index], index, array);
+  }
+};
 
-  const response = await fetch(url, {
+const getTripEndPoint = async (path: string): Promise<EndPoint> => {
+  return {
+    url: `${environment.api_url}/trips/${environment.trip_id}/${path}`,
+    token: environment.api_key
+  };
+};
+
+const fetchTripEndpoint = async (path: string): Promise<Response> => {
+  const endPoint = await getTripEndPoint(path);
+  const response = await fetch(endPoint.url, {
     headers: {
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${endPoint.token}`
     }
   });
 
   return response;
 };
 
-const getFileList = async () => {
+const getFileList = async (): Promise<[]> => {
   const response = await fetchTripEndpoint("file_list");
   const files = await response.json();
   return files;
 };
 
-const getFileExt = (fileName: string): string => {
-  return fileName.split(".").pop();
-};
-
-const getFile = async (fileName: string): Promise<Response> => {
-  return fetchTripEndpoint(`get_file?file_path=${fileName}`);
-};
-
-const getFileContent = async (file: string): Promise<FileContent> => {
-  const type = getFileExt(file);
-  const response = await getFile(file);
-
-  // @ts-ignore
-  const buffer = await response.buffer();
-  return { file, type, buffer };
-};
-
-const writeFiles = async (actions: [], ionicFile: File) => {
-  const files = await Promise.all(actions);
-  files.forEach((data: FileContent) => {
-    console.log(`writing data.file - ${data.file}`);
-
-    ionicFile.writeFile(this.globals.dataDirectory, data.file, data.buffer, {
-      replace: true
-    });
-    /*
-    fs.writeFile("./assets/data/" + data.file, data.buffer, e => {
-      if (e) {
-        console.log(e.message);
-      }
-    });
-    */
-  });
-};
-
-export const syncSingleFiles = async ionicFile => {
+export const syncSingleFiles = async (): Promise<void> => {
+  
+  // get a list of files we want to download
   const files = await getFileList();
 
-  const actions = files.map(file => {
-    return getFileContent(file);
-  });
+  // get device storage directory
+  const file = new File();
+  const storageDir = file.dataDirectory;
 
-  try {
-    await writeFiles(actions, ionicFile);
-    console.log("ready");
-    return true;
-  } catch (e) {
-    console.log(e.message);
-    return false;
-  }
+  // download files
+  await asyncForEach(files, async fileName => {
+    const fileTransfer = new FileTransferObject();
+    const endPoint = await getTripEndPoint(`get_file?file_path=${fileName}`);
+    const uri = encodeURI(endPoint.url);
+    const fileUrl = `${storageDir}/${fileName}`;
+
+    try {
+      await fileTransfer.download(uri, fileUrl, false, {
+        headers: {
+          Authorization: `Bearer ${endPoint.token}`
+        }
+      });
+    } catch (e) {
+      console.log(`fileTransfer failed ${e.message}`);
+    }
+  });
 };
