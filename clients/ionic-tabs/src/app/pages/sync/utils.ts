@@ -8,8 +8,8 @@ interface EndPoint {
 }
 
 const asyncForEach = async (
-  array: [],
-  callback: (arr: [], index: number, array: []) => {}
+  array: string[],
+  callback: (item: string, index: number, array: string[]) => {}
 ) => {
   for (let index = 0; index < array.length; index++) {
     await callback(array[index], index, array);
@@ -34,14 +34,13 @@ const fetchTripEndpoint = async (path: string): Promise<Response> => {
   return response;
 };
 
-const getFileList = async (): Promise<[]> => {
+const getFileList = async (): Promise<string[]> => {
   const response = await fetchTripEndpoint("file_list");
   const files = await response.json();
   return files;
 };
 
 export const syncSingleFiles = async (): Promise<void> => {
-  
   // get a list of files we want to download
   const files = await getFileList();
 
@@ -54,7 +53,10 @@ export const syncSingleFiles = async (): Promise<void> => {
     const fileTransfer = new FileTransferObject();
     const endPoint = await getTripEndPoint(`get_file?file_path=${fileName}`);
     const uri = encodeURI(endPoint.url);
-    const fileUrl = `${storageDir}/${fileName}`;
+
+    const arr = fileName.split("/");
+    const saveAs = arr[arr.length - 1];
+    const fileUrl = `${storageDir}/${saveAs}`;
 
     try {
       await fileTransfer.download(uri, fileUrl, false, {
@@ -62,6 +64,8 @@ export const syncSingleFiles = async (): Promise<void> => {
           Authorization: `Bearer ${endPoint.token}`
         }
       });
+
+      console.log(`fileTransfer result source ${fileUrl}`);
     } catch (e) {
       console.log(`fileTransfer failed ${e.message}`);
     }

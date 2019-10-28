@@ -16,7 +16,7 @@ export class SyncPage implements OnInit {
   async presentLoading() {
     this.loading = await this.loadingController.create({
       message: "Attempting to sync data...",
-      duration: 30000
+      duration: 10000
     });
 
     await this.loading.present();
