@@ -1,17 +1,16 @@
-import { Injectable } from '@angular/core';
-import { Platform } from '@ionic/angular';
-import { File } from '@ionic-native/file/ngx';
+import { Injectable } from "@angular/core";
+import { Platform } from "@ionic/angular";
+import { File } from "@ionic-native/file/ngx";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class GlobalsService {
-
-  dataDirectory = './assets/data';
+  dataDirectory = "./assets/data";
 
   constructor(private platform: Platform, private file: File) {
     platform.ready().then(() => {
-      console.log('platform ready');
+      console.log("platform ready");
       // if (this.platform.is('ios')) {
       if (this.file.dataDirectory) {
         this.setDataDirectory(this.file.dataDirectory);
@@ -27,4 +26,8 @@ export class GlobalsService {
     return this.dataDirectory;
   }
 
+  getStorageDiretory() {
+    // get device storage directory
+    this.file.dataDirectory;
+  }
 }

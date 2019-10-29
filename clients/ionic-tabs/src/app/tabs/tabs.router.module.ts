@@ -1,73 +1,59 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { TabsPage } from './tabs.page';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { TabsPage } from "./tabs.page";
 
 const routes: Routes = [
   {
-    path: 'tabs',
+    path: "tabs",
     component: TabsPage,
     children: [
       {
-        path: 'documents',
+        path: "documents",
         children: [
           {
-            path: '',
+            path: "",
             loadChildren: () =>
-              import('../pages/documents/documents.module').then(m => m.DocumentsPageModule)
+              import("../pages/documents/documents.module").then(
+                m => m.DocumentsPageModule
+              )
           }
         ]
       },
       {
-        path: 'documents/:id',
+        path: "documents/:id",
         loadChildren: () =>
-          import('../pages/document/document.module').then(m => m.DocumentPageModule)
+          import("../pages/document/document.module").then(
+            m => m.DocumentPageModule
+          )
       },
       {
-        path: 'contacts',
+        path: "contacts",
         children: [
           {
-            path: '',
+            path: "",
             loadChildren: () =>
-              import('../pages/contacts/contacts.module').then(m => m.ContactsPageModule)
+              import("../pages/contacts/contacts.module").then(
+                m => m.ContactsPageModule
+              )
           }
         ]
       },
       {
-        path: 'contacts/:id',
+        path: "sync",
         loadChildren: () =>
-          import('../pages/contact/contact.module').then(m => m.ContactPageModule)
+          import("../pages/sync/sync.module").then(m => m.SyncPageModule)
       },
       {
-        path: 'notes',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('../pages/notes/notes.module').then(m => m.NotesPageModule)
-          }
-        ]
-      },
-      {
-        path: 'notes/:id',
-        loadChildren: () =>
-          import('../pages/note/note.module').then(m => m.NotePageModule)
-      },
-      {
-        path: 'sync',
-        loadChildren: () =>
-          import('../pages/sync/sync.module').then(m => m.SyncPageModule)
-      },
-      {
-        path: '',
-        redirectTo: '/tabs/documents',
-        pathMatch: 'full'
+        path: "",
+        redirectTo: "/tabs/documents",
+        pathMatch: "full"
       }
     ]
   },
   {
-    path: '',
-    redirectTo: '/tabs/documents',
-    pathMatch: 'full'
+    path: "",
+    redirectTo: "/tabs/documents",
+    pathMatch: "full"
   }
 ];
 
@@ -75,4 +61,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class TabsPageRoutingModule { }
+export class TabsPageRoutingModule {}
